@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:text="2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textViewNbQuestion"
+            android:layout_toLeftOf="@+id/textViewNbQuestion"
+            android:layout_toStartOf="@+id/textViewNbQuestion"
+            android:id="@+id/textViewNombreQuestion"
+            android:textSize="30sp" />
+
+        <TextView
+            android:text="/20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="41dp"
+            android:id="@+id/textViewNbQuestion"
+            android:textSize="30sp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:text="X"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewFois"
+            android:textSize="72sp"
+            android:fontFamily="serif"
+            android:textStyle="normal|bold"
+            android:layout_alignBaseline="@+id/TextViewDigitGauche"
+            android:layout_alignBottom="@+id/TextViewDigitGauche"
+            android:layout_toRightOf="@+id/textViewNombreQuestion"
+            android:layout_toEndOf="@+id/textViewNombreQuestion" />
+
+        <TextView
+            android:text="="
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="43dp"
+            android:id="@+id/textViewEgal"
+            android:textSize="60sp"
+            android:fontFamily="serif"
+            android:layout_below="@+id/textViewFois"
+            android:layout_alignRight="@+id/textViewNbQuestion"
+            android:layout_alignEnd="@+id/textViewNbQuestion" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:layout_below="@+id/textViewEgal"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="69dp"
+            android:id="@+id/editTextResultat"
+            android:textSize="90sp"
+            android:gravity="center"
+            android:background="@android:color/transparent"
+            android:fontFamily="serif" />
+
+        <TextView
+            android:text="12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="56dp"
+            android:id="@+id/TextViewDigitGauche"
+            android:textSize="90sp"
+            android:fontFamily="serif"
+            android:textStyle="normal|bold"
+            android:layout_below="@+id/textViewNombreQuestion"
+            android:layout_toLeftOf="@+id/textViewNombreQuestion"
+            android:layout_toStartOf="@+id/textViewNombreQuestion"
+            android:layout_marginRight="35dp"
+            android:layout_marginEnd="35dp" />
+
+        <TextView
+            android:text="12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewDigitDroite"
+            android:textSize="90sp"
+            android:fontFamily="serif"
+            android:textStyle="normal|bold"
+            android:layout_alignBaseline="@+id/textViewFois"
+            android:layout_alignBottom="@+id/textViewFois"
+            android:layout_toRightOf="@+id/textViewFois"
+            android:layout_toEndOf="@+id/textViewFois"
+            android:layout_marginLeft="49dp"
+            android:layout_marginStart="49dp" />
+    </RelativeLayout>
+</LinearLayout>
