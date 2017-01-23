@@ -10,6 +10,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.page_calcul);
         //test
-        //test Rob
+
+        //nouveau commit
     }
 }
