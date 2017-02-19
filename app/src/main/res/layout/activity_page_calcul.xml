@@ -95,5 +95,16 @@
             android:layout_toEndOf="@+id/textViewFois"
             android:layout_marginLeft="49dp"
             android:layout_marginStart="49dp" />
+
+
+        <ImageButton
+            style = "@style/btnArrow"
+            android:id="@+id/imageButton_previous_page_calcul"
+            />
+
+        <ImageButton
+            style = "@style/btnHome"
+            android:id="@+id/imageButton_home_page_calcul"
+            />
     </RelativeLayout>
 </LinearLayout>
