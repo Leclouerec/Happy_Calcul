@@ -21,10 +21,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".new_user" />
-        <activity android:name=".page_calcul" />
+        <activity
+            android:name=".page_calcul"
+            android:windowSoftInputMode="stateAlwaysVisible" />
         <activity android:name=".tables" />
         <activity android:name=".MainActivity" />
         <activity android:name=".apprentissage" />
+        <activity android:name=".connexion"></activity>
     </application>
 
 </manifest>

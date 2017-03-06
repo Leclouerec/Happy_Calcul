@@ -64,7 +64,8 @@
             android:textSize="90sp"
             android:gravity="center"
             android:background="@android:color/transparent"
-            android:fontFamily="serif" />
+            android:fontFamily="serif"
+            android:focusableInTouchMode="true"/>
 
         <TextView
             android:text="12"
