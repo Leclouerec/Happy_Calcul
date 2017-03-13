@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<compte>
+	<nom>TOTO</nom>
+	<mdp>TOTO</mdp>
+	<profil level="ce2"> 
+		<numLevel>1</numLevel>
+		<pourcentage>50</pourcentage>
+	</profil>
+	<historique>
+		<session date="06/03/2017" note="20/20">
+			<question string="1*1">
+				<reponse>1</reponse>
+				<correct>VRAI</correct>
+			</question>
+			<question string="1*1">
+				<reponse>1</reponse>
+				<correct>VRAI</correct>
+			</question>
+			<question string="1*1">
+				<reponse>1</reponse>
+				<correct>VRAI</correct>
+			</question>
+			<question string="1*1">
+				<reponse>1</reponse>
+				<correct>VRAI</correct>
+			</question>
+			<question string="1*1">
+				<reponse>1</reponse>
+				<correct>VRAI</correct>
+			</question>
+			<question string="1*1">
+				<reponse>1</reponse>
+				<correct>VRAI</correct>
+			</question>
+			<question string="1*1">
+				<reponse>1</reponse>
+				<correct>VRAI</correct>
+			</question>
+			<question string="1*1">
+				<reponse>1</reponse>
+				<correct>VRAI</correct>
+			</question>
+			<question string="1*1">
+				<reponse>1</reponse>
+				<correct>VRAI</correct>
+			</question>
+			<question string="1*1">
+				<reponse>1</reponse>
+				<correct>VRAI</correct>
+			</question>
+			<question string="1*1">
+				<reponse>1</reponse>
+				<correct>VRAI</correct>
+			</question>
+			<question string="1*1">
+				<reponse>1</reponse>
+				<correct>VRAI</correct>
+			</question>
+			<question string="1*1">
+				<reponse>1</reponse>
+				<correct>VRAI</correct>
+			</question>
+			<question string="1*1">
+				<reponse>1</reponse>
+				<correct>VRAI</correct>
+			</question>
+			<question string="1*1">
+				<reponse>1</reponse>
+				<correct>VRAI</correct>
+			</question>
+			<question string="1*1">
+				<reponse>1</reponse>
+				<correct>VRAI</correct>
+			</question>
+			<question string="1*1">
+				<reponse>1</reponse>
+				<correct>VRAI</correct>
+			</question>
+			<question string="1*1">
+				<reponse>1</reponse>
+				<correct>VRAI</correct>
+			</question>
+			<question string="1*1">
+				<reponse>1</reponse>
+				<correct>VRAI</correct>
+			</question>
+			<question string="1*1">
+				<reponse>1</reponse>
+				<correct>VRAI</correct>
+			</question>
+		</session>	
+		<session date="06/03/2017" note="17/20">
+			<question string="2*2">
+				<reponse>2</reponse>
+				<correct>VRAI</correct>
+			</question>
+			<question string="2*2">
+				<reponse>2</reponse>
+				<correct>VRAI</correct>
+			</question>
+			<question string="2*2">
+				<reponse>2</reponse>
+				<correct>VRAI</correct>
+			</question>
+			<question string="2*2">
+				<reponse>2</reponse>
+				<correct>VRAI</correct>
+			</question>
+			<question string="2*2">
+				<reponse>2</reponse>
+				<correct>VRAI</correct>
+			</question>
+			<question string="2*2">
+				<reponse>2</reponse>
+				<correct>VRAI</correct>
+			</question>
+			<question string="2*2">
+				<reponse>2</reponse>
+				<correct>VRAI</correct>
+			</question>
+			<question string="2*2">
+				<reponse>2</reponse>
+				<correct>VRAI</correct>
+			</question>
+			<question string="2*2">
+				<reponse>2</reponse>
+				<correct>VRAI</correct>
+			</question>
+			<question string="2*2">
+				<reponse>2</reponse>
+				<correct>VRAI</correct>
+			</question>
+			<question string="2*2">
+				<reponse>2</reponse>
+				<correct>VRAI</correct>
+			</question>
+			<question string="2*2">
+				<reponse>2</reponse>
+				<correct>VRAI</correct>
+			</question>
+			<question string="2*2">
+				<reponse>2</reponse>
+				<correct>VRAI</correct>
+			</question>
+			<question string="2*2">
+				<reponse>2</reponse>
+				<correct>VRAI</correct>
+			</question>
+			<question string="2*2">
+				<reponse>2</reponse>
+				<correct>VRAI</correct>
+			</question>
+			<question string="2*2">
+				<reponse>2</reponse>
+				<correct>VRAI</correct>
+			</question>
+			<question string="2*2">
+				<reponse>2</reponse>
+				<correct>VRAI</correct>
+			</question>
+			<question string="2*2">
+				<reponse>1</reponse>
+				<correct>FAUX</correct>
+			</question>
+			<question string="2*2">
+				<reponse>1</reponse>
+				<correct>FAUX</correct>
+			</question>
+			<question string="2*2">
+				<reponse>1</reponse>
+				<correct>FAUX</correct>
+			</question>
+		</session>
+	</historique>	
+</compte>

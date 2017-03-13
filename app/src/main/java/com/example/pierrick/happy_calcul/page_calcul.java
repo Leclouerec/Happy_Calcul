@@ -138,8 +138,11 @@ public class page_calcul extends AppCompatActivity {
         String result = resultat.getText().toString();
 
         Boolean juste;
-        if(!test)
+        if(!test || (result.equals(""))){
             result ="0";
+            Log.e("PUTAIN", " skcc");
+        }
+
 
         if((Integer.parseInt(digitGauche.getText().toString())) <= (Integer.parseInt(digitDroite.getText().toString()))){
             gauche =Integer.parseInt(digitGauche.getText().toString());
@@ -165,14 +168,14 @@ public class page_calcul extends AppCompatActivity {
 
         if(numeroQuestion <=10)
             if(juste)
-                com.example.pierrick.happy_calcul.resultat.resGauche += "\n" +"<br>"+" <font color=#29E830>"+digitGauche.getText().toString() + " X " + digitDroite.getText().toString() + " = " + result+"</font>";
+                com.example.pierrick.happy_calcul.resultat.resGauche += "\n" +"<br>"+digitGauche.getText().toString() + " X " + digitDroite.getText().toString() + " = " + " <font color=#29E830>"+result+"</font>";
             else
-                com.example.pierrick.happy_calcul.resultat.resGauche += "\n" +"<br>"+ " <font color=#cc0029>"+digitGauche.getText().toString() + " X " + digitDroite.getText().toString() + " = " + result+"</font>";
+                com.example.pierrick.happy_calcul.resultat.resGauche += "\n" +"<br>"+ digitGauche.getText().toString() + " X " + digitDroite.getText().toString() + " = " + " <font color=#cc0029>"+result+"</font>" + " ("+(gauche * droite)+") ";
         else
             if(juste)
-                com.example.pierrick.happy_calcul.resultat.resDroite += "\n" +"<br>"+ " <font color=#29E830>"+digitGauche.getText().toString() + " X " + digitDroite.getText().toString() + " = " + result+"</font>";
+                com.example.pierrick.happy_calcul.resultat.resDroite += "\n" +"<br>"+ digitGauche.getText().toString() + " X " + digitDroite.getText().toString() + " = " + " <font color=#29E830>"+result+"</font>";
             else
-                com.example.pierrick.happy_calcul.resultat.resDroite += "\n"+"<br>" + " <font color=#cc0029>"+digitGauche.getText().toString() + " X " + digitDroite.getText().toString() + " = " + result+"</font>";
+                com.example.pierrick.happy_calcul.resultat.resDroite += "\n"+"<br>" + digitGauche.getText().toString() + " X " + digitDroite.getText().toString() + " = " +" <font color=#cc0029>"+ result+"</font>"+" ("+(gauche * droite)+") ";
 
         Log.e("fdp", " apres " + resultatGauche.getText().toString());
         resultat.setText(null);

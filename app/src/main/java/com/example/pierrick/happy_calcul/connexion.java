@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -34,6 +35,9 @@ public class connexion extends AppCompatActivity {
 
         EditText pseudo = (EditText)findViewById(R.id.editText_pseudo);
         EditText mdp = (EditText)findViewById(R.id.editText_mdp);
+
+
+
         //mdp.clearFocus();
         pseudo.requestFocus();
 
@@ -76,7 +80,7 @@ public class connexion extends AppCompatActivity {
         }
 
         fileUsers = new ReadXMLFileUsers(is, f);
-        Log.e("tesjt", " list " + fileUsers.getUsers().get(0).getName() + " mot de passe " + fileUsers.getUsers().get(0).getMdp());
+         Log.e("tesjt", " list " + fileUsers.getUsers().get(0).getName() + " mot de passe " + fileUsers.getUsers().get(0).getMdp());
     }
 
 

@@ -41,8 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/textView_resultat_gauche"
-        android:layout_toEndOf="@+id/textView_resultat_final"
-        android:layout_marginStart="41dp"
+        android:layout_toEndOf="@+id/textView_score_final"
         android:id="@+id/textView_resultat_droite"
         android:textSize="40sp"
         android:text="test"/>

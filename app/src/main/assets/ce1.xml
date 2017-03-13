@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<profil nom ="CE1">
+	<levels>
+		<level num="1">
+			<premierDigit>3</premierDigit>
+			<secondDigit>3</secondDigit>
+			<pourcentageSuivant>85</pourcentageSuivant>
+		</level>
+		<level num="2">
+			<premierDigit>5</premierDigit>
+			<secondDigit>5</secondDigit>
+			<pourcentageSuivant>85</pourcentageSuivant>
+		</level>
+	</levels>
+</profil>
