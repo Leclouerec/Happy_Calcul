@@ -30,8 +30,10 @@ public class apprentissage extends AppCompatActivity {
         b.home(view, this);
     }
 
-    public void jouer(View view){
-        Intent intent = new Intent(this, page_calcul.class);
+    public void jeux(View view){
+        Intent intent = new Intent(apprentissage.this, page_calcul.class);
         startActivity(intent);
     }
+
+
 }

@@ -28,7 +28,9 @@
         android:gravity="center"
         android:layout_below="@+id/textView_tables_de_multiplication"
         android:layout_marginTop="50dp"
-        android:minWidth="75dp"/>
+        android:minWidth="75dp"
+        android:padding="10dp"
+        />
 
     <TextView
         android:layout_width="wrap_content"

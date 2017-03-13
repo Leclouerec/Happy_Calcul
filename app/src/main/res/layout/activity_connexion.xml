@@ -10,4 +10,62 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.pierrick.happy_calcul.connexion">
 
+
+    <TextView
+        android:text="Mot de passe : "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView_pseudo"
+        android:layout_alignStart="@+id/textView_pseudo"
+        android:layout_marginTop="193dp"
+        android:id="@+id/textView_mdp"
+        android:textSize="20sp" />
+
+
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:textSize="20sp"
+        android:layout_marginStart="52dp"
+        android:id="@+id/editText_pseudo"
+        android:layout_above="@+id/textView_mdp"
+        android:layout_toEndOf="@+id/textView_mdp"
+        android:visibility="visible" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/editText_mdp"
+        android:textSize="20sp"
+        android:layout_alignBottom="@+id/textView_mdp"
+        android:layout_alignStart="@+id/editText_pseudo"
+        android:visibility="visible" />
+
+    <TextView
+        android:text="Pseudo : "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="186dp"
+        android:layout_marginTop="193dp"
+        android:id="@+id/textView_pseudo"
+        android:textSize="20sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Connexion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText_mdp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="207dp"
+        android:id="@+id/button_connexion"
+        android:elevation="4dp"
+        android:onClick="connexion"
+        style="@style/Widget.AppCompat.Button.Borderless" />
 </RelativeLayout>
