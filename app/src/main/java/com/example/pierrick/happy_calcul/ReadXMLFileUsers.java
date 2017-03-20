@@ -55,10 +55,6 @@ public class ReadXMLFileUsers {
         f = _f;
 
 
-
-
-        Log.e("test", " allez");
-
         System.out.println("*************PROLOGUE************");
 
 

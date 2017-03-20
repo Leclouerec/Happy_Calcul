@@ -2,9 +2,10 @@
 <compte>
 	<nom>TOTO</nom>
 	<mdp>TOTO</mdp>
-	<profil level="ce2"> 
+	<profil level="ce2">
 		<numLevel>1</numLevel>
-		<pourcentage>50</pourcentage>
+		<serie>4</serie>
+		<pourcentage>90</pourcentage>
 	</profil>
 	<historique>
 		<session date="06/03/2017" note="20/20">

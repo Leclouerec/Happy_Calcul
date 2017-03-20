@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <profil nom ="CM1">
-	<nbLevel>2</nbLevel>
 	<level num="1">
 		<premierDigit>7</premierDigit>
 		<secondDigit>7</secondDigit>
+		<pourcentage2X2>0</pourcentage2X2>
+		<serie>5</serie>
 		<pourcentageSuivant>85</pourcentageSuivant>
 	</level>
 	<level num="2">
 		<premierDigit>9</premierDigit>
 		<secondDigit>9</secondDigit>
+		<pourcentage2X2>0</pourcentage2X2>
+		<serie>0</serie>
 		<pourcentageSuivant>85</pourcentageSuivant>
 	</level>
 </profil>

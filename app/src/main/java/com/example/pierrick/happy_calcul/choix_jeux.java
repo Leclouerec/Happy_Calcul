@@ -20,17 +20,25 @@ public class choix_jeux extends AppCompatActivity {
 
     private int i = 0;
     private ReadXMLFileCurrentUser profilUser;
+    private ReadXMLFileProfil profil;
+    public static profil profil1 = new profil();
+    private redondance tableauRedondance;
+    private boolean firstConnexion = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choix_jeux);
 
 
+
+
         InputStream is = null;
+        InputStream is2 = null;
 
         try {
             AssetManager am = this.getAssets();
             is = am.open(connexion.current.getName()+".xml");
+
 
 
         }catch(IOException ex) {
@@ -39,13 +47,41 @@ public class choix_jeux extends AppCompatActivity {
 
 
         profilUser = new ReadXMLFileCurrentUser(is);
+
+        try {
+            AssetManager am = this.getAssets();
+            is = am.open(connexion.current.getLevel()+".xml");
+
+
+
+        }catch(IOException ex) {
+            //Do something witht the exception
+        }
+        Log.e("numLevel", " alazaz" + connexion.current.getNumLevel());
+        profil = new ReadXMLFileProfil(is, connexion.current.getNumLevel());
+        profil1 = profil.getProfil1();
+
+        if(connexion.firstConnexion || resultat.changementLevel){
+
+            Log.e("bornepremier", "fdpdigit" + profil1.getBornePremiereDigit());
+            tableauRedondance = new redondance(profil1.getBornePremiereDigit());//utile pour la redondance des calculs
+
+            ecrireFichierRedondance(profil1.getBornePremiereDigit(),this, tableauRedondance.tableauCalcul);
+
+            connexion.firstConnexion = false;
+        }
+
+
+
         /*tableauRedondance = new redondance(10);
 
         ecrireFichierRedondance(10,this, tableauRedondance.tableauCalcul);*/
 
 
         Toast.makeText(this, "Pseudo " + connexion.current.getName(), Toast.LENGTH_SHORT).show();
+        Log.e("profil complet", "level :" + connexion.current.getLevel() + " ,numLevel : " + connexion.current.getNumLevel() + " ,serie : " + connexion.current.getSerie() + " , pourcentage : " + connexion.current.getPourcentage());
 
+        Log.e("profil ", "bornepremiere : " + profil1.getBornePremiereDigit());
 
        /* final ImageView image = (ImageView) findViewById(R.id.imageView_chrono);
         //int i = 0;
@@ -105,6 +141,11 @@ public class choix_jeux extends AppCompatActivity {
         Intent intent = new Intent(this, apprentissage.class);
         startActivity(intent);
     }
+
+    public profil getProfil1(){
+        return profil1;
+    }
+
 
 
 

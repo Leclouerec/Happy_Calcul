@@ -26,7 +26,7 @@ public class connexion extends AppCompatActivity {
 
     private ReadXMLFileUsers fileUsers;
     public static user current= new user();
-    private redondance tableauRedondance;
+    public static boolean firstConnexion = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,9 +43,7 @@ public class connexion extends AppCompatActivity {
 
         writeToFile(1,this); //utile pour la page de calcul
 
-        tableauRedondance = new redondance(10);//utile pour la redondance des calculs
 
-        ecrireFichierRedondance(10,this, tableauRedondance.tableauCalcul);
 
 
 
@@ -150,28 +148,5 @@ public class connexion extends AppCompatActivity {
         }
     }
 
-    public void ecrireFichierRedondance(int nbTables, Context context, int[][] tableauCalcul){
 
-        try {
-            File path = context.getFilesDir();
-            File file = new File(path, "redondance.txt");
-            FileOutputStream stream = new FileOutputStream(file);
-            int nbLignes = (int)(0.5 * nbTables * (nbTables+1));
-            for(int i = 1 ; i<= nbTables ; i++)
-                for(int j = i ; j <= nbTables; j++)
-                {
-                    Log.e("gueuel du int", "  " + tableauCalcul[i][j]);
-                    stream.write(tableauCalcul[i][j]);
-                    stream.write(System.getProperty("line.separator").getBytes());
-                }
-
-
-
-            stream.close();
-        }
-        catch (IOException e) {
-            Log.e("Exception", "File write failed: " + e.toString());
-        }
-
-    }
 }

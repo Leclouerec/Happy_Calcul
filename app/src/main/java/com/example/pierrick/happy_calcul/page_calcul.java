@@ -30,6 +30,7 @@ import java.io.OutputStreamWriter;
 import java.math.BigInteger;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.util.Random;
 
 public class page_calcul extends AppCompatActivity {
 
@@ -39,13 +40,34 @@ public class page_calcul extends AppCompatActivity {
     private int borneMax = 10;  //sera dans les parametres du xml
     private int nombreDeQuestion = 20;//sera dans les paametres du xml;
     private int numeroQuestion = 1;
+    private int serie = 0; //nombre de serie pour passer au prochain profil
+    private static int pourcentageSuivant = 0;
+    private int pourcentage2x2 = 0;
     private redondance calcul;
     private int[][] tableauCalcul;
     private int gauche = 0;
     private int droite = 0;
+    private profil profil1;
     private boolean test = false;
 
 
+    public page_calcul(){}
+
+    public static int getPourcentageSuivant() {
+        return pourcentageSuivant;
+    }
+
+    public void setPourcentageSuivant(int pourcentageSuivant) {
+        this.pourcentageSuivant = pourcentageSuivant;
+    }
+
+    public int getSerie() {
+        return serie;
+    }
+
+    public void setSerie(int serie) {
+        this.serie = serie;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,11 +77,18 @@ public class page_calcul extends AppCompatActivity {
 
         //calcul = new redondance(10);
 
+
+
+        Log.e("JE PASSE QUAND", " MEME" + choix_jeux.profil1.getBornePremiereDigit());
+
+        profil1 = choix_jeux.profil1;
+        borneMax = profil1.getBornePremiereDigit();//se sont les mêmes bornes ...
+        serie = profil1.getSerie();
+        pourcentageSuivant = profil1.getPourcentage();
+        pourcentage2x2 = profil1.getPourcentage2x2();
+
         readRedondance(this);
         calcul = new redondance(borneMax);
-
-        Log.e("JE PASSE QUAND", " MEME");
-
         initialisation();
         Log.e("ET MEME", " LA");
         chronometre();
@@ -78,6 +107,8 @@ public class page_calcul extends AppCompatActivity {
         final EditText resultat = (EditText) findViewById(R.id.editTextResultat);
 
         resultat.requestFocus();
+
+        Log.e("moification serie", " STP " + serie);
 
 
 
@@ -115,7 +146,9 @@ public class page_calcul extends AppCompatActivity {
 
     public int nombreAleatoire(int borneMin, int borneMax){
 
-        return (int)(Math.random()*(borneMax-borneMin))+1;
+        Random r = new Random();
+        //return (int)(Math.random()*(borneMax-borneMin))+1;
+        return (int)borneMin + r.nextInt(borneMax+1 - borneMin);
     }
 
 
@@ -214,7 +247,7 @@ public class page_calcul extends AppCompatActivity {
         imm.showSoftInput(resultat, InputMethodManager.SHOW_FORCED);*/
 
         if(numeroQuestion != 20){
-            writeToFile(numeroQuestion +1, this);
+            writeToFile(numeroQuestion +1, this, "config.txt");
 
             tableauCalcul[gauche][droite]++;
             ecrireFichierRedondance(borneMax, this, tableauCalcul);
@@ -224,7 +257,7 @@ public class page_calcul extends AppCompatActivity {
 
         }else{
 
-            writeToFile(1, this);
+            writeToFile(1, this, "config.txt");
 
             Intent intent = new Intent(page_calcul.this, resultat.class);
             startActivity(intent);
@@ -279,46 +312,7 @@ public class page_calcul extends AppCompatActivity {
 
 
     }
-    public void lancerJeux(){
 
-        TextView digitGauche = (TextView) findViewById(R.id.textViewDigitGauche);
-        TextView digitDroite = (TextView) findViewById(R.id.textViewDigitDroite);
-        TextView numeroQuestion = (TextView) findViewById(R.id.textViewNombreQuestion);
-        TextView nbQuestion = (TextView) findViewById(R.id.textViewNbQuestion);
-        final EditText resultat = (EditText) findViewById(R.id.editTextResultat);
-
-        //final boolean boutonPressed = false;
-
-        String test = "<font color=#cc0029>"+ " / " + String.valueOf(nombreDeQuestion)+"</font>";
-
-        //nbQuestion.setText(" / " + String.valueOf(nombreDeQuestion));
-        nbQuestion.setText(test);
-
-        for(int i = 1; i <= nombreDeQuestion ; i ++ ){
-            digit1 = nombreAleatoire(borneMin, borneMax);
-            digit2 = nombreAleatoire(borneMin, borneMax);
-
-
-
-            resultat.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-                public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-
-                    if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
-                        Log.e("TEST", "Enter pressed :" + resultat.getText().toString());
-                    }
-                    return false;
-                }
-            });
-
-
-            digitGauche.setText(String.valueOf(digit1));
-            digitDroite.setText(String.valueOf(digit2));
-            numeroQuestion.setText(String.valueOf(i));
-
-        }
-
-
-    }
 
     public void chronometre(){
 
@@ -386,10 +380,10 @@ public class page_calcul extends AppCompatActivity {
     }
 
 
-    private void writeToFile(int data,Context context) {
+    private void writeToFile(int data,Context context, String chemin) {
         try {
             File path = context.getFilesDir();
-            File file = new File(path, "config.txt");
+            File file = new File(path, chemin);
             FileOutputStream stream = new FileOutputStream(file);
             stream.write(data);
             stream.close();
@@ -456,6 +450,7 @@ public class page_calcul extends AppCompatActivity {
         }
         int k = 0;
 
+
         for(int i = 1 ; i<= borneMax ; i++)
             for(int j = i; j<=borneMax ; j++){
                 tableauCalcul[i][j] = bytes[k];
@@ -469,6 +464,8 @@ public class page_calcul extends AppCompatActivity {
     }
 
     public void ecrireFichierRedondance(int nbTables, Context context, int[][] tableauCalcul){
+
+        Log.e("creation table", " brne " +nbTables);
 
         try {
             File path = context.getFilesDir();

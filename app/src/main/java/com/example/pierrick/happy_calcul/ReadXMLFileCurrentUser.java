@@ -86,14 +86,26 @@ public class ReadXMLFileCurrentUser {
 
 
             final String level = profil.getAttribute("level");
-            System.out.println("nom : " + level);
+            System.out.println("level : " + level);
 
-            final Element name = (Element) profil.getElementsByTagName("numLevel").item(0);
+            final Element numLevel = (Element) profil.getElementsByTagName("numLevel").item(0);
             final Element pourcentage = (Element) profil.getElementsByTagName("pourcentage").item(0);
+            final Element serie = (Element) profil.getElementsByTagName("serie").item(0);
 
             //Affichage du nom et du prénom
-            System.out.println("numLevel : " + name.getTextContent());
+            System.out.println("numLevel : " + numLevel.getTextContent());
             System.out.println("poucentage : " + pourcentage.getTextContent());
+            System.out.println("serie : " + serie.getTextContent());
+
+            //modifications des éléments de l'utilisateur courrant
+            connexion.current.setLevel(level);
+
+            connexion.current.setPourcentage(Integer.parseInt(pourcentage.getTextContent()));
+            if(connexion.firstConnexion){
+                connexion.current.setSerie(Integer.parseInt(serie.getTextContent()));
+                connexion.current.setNumLevel(Integer.parseInt(numLevel.getTextContent()));
+            }
+
 
 
 
