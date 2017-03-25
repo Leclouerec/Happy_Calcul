@@ -30,7 +30,9 @@
         <activity android:name=".apprentissage" />
         <activity android:name=".choix_jeux" />
         <activity android:name=".resultat" />
-        <activity android:name=".listeUtilisateurs"></activity>
+        <activity android:name=".listeUtilisateurs" />
+        <activity android:name=".profil_activity" />
+        <activity android:name=".historique"></activity>
     </application>
 
 </manifest>

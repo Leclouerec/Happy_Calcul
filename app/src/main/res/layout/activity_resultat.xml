@@ -28,15 +28,6 @@
         />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/textView_resultat_gauche"
-        android:layout_toEndOf="@+id/textView_score_final"
-        android:id="@+id/textView_resultat_droite"
-        android:textSize="40sp"
-        android:text="test"/>
-
-    <TextView
         android:text="18 / 20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -49,11 +40,21 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/textView_resultat_droite"
+        android:textSize="33sp"
+        android:text="test"
+        android:layout_alignBaseline="@+id/textView_resultat_gauche"
+        android:layout_alignBottom="@+id/textView_resultat_gauche"
+        android:layout_toEndOf="@+id/textView_score_final" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="146dp"
         android:id="@+id/textView_resultat_gauche"
-        android:textSize="40sp"
+        android:textSize="33sp"
         android:text="test"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="13dp"
         android:layout_below="@+id/textView_resultat_final"
         android:layout_toStartOf="@+id/textView_score_final" />
 

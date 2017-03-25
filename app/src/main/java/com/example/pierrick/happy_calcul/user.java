@@ -34,6 +34,16 @@ public class user {
         mdp = _mdp;
 
     }
+
+    public user(String _name){
+        name = _name;
+    }
+
+    public user(String _name, String _mdp, String _level){
+        name = _name;
+        mdp = _mdp;
+        level = _level;
+    }
     public user(String _name, String _mdp, String _level, int _numLevel, int _serie, int _pourcentage){
         name = _name;
         mdp = _mdp;

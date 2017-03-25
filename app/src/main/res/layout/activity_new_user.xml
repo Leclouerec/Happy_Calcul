@@ -29,19 +29,6 @@
         android:layout_alignStart="@+id/textView_profil"
         android:layout_marginTop="62dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Profil :"
-        android:id="@+id/textView_profil"
-        android:layout_marginTop="76dp"
-        android:textSize="40sp"
-        android:layout_below="@+id/textView_prenom"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="87dp"
-        android:layout_marginStart="87dp" />
-
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -65,6 +52,73 @@
         android:layout_toEndOf="@+id/textView_prenom"/>
 
 
+    <Button
+        android:layout_width="270dp"
+        android:layout_height="150dp"
+        android:text="AJOUTER"
+        android:id="@+id/button_add"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        android:onClick="add"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_below="@+id/spinner_profil"
+        android:layout_alignStart="@+id/spinner_profil"
+        android:layout_marginTop="138dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mot de passe :"
+        android:id="@+id/textView_new_mdp"
+        android:textSize="40sp"
+        android:layout_marginTop="49dp"
+        android:layout_below="@+id/textView_prenom"
+        android:layout_alignStart="@+id/textView_profil" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Profil :"
+        android:id="@+id/textView_profil"
+        android:layout_marginTop="156dp"
+        android:textSize="40sp"
+        android:layout_marginLeft="87dp"
+        android:layout_marginStart="87dp"
+        android:layout_below="@+id/textView_new_mdp"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirmation :"
+        android:textSize="40sp"
+        android:layout_marginTop="59dp"
+        android:layout_below="@+id/textView_new_mdp"
+        android:layout_alignStart="@+id/textView_profil"
+        android:id="@+id/textView_confirmation" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:layout_alignBottom="@+id/textView_new_mdp"
+        android:layout_toEndOf="@+id/textView_new_mdp"
+        android:layout_marginStart="58dp"
+        android:id="@+id/editText_new_mdp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:layout_alignBottom="@+id/textView_confirmation"
+        android:layout_alignEnd="@+id/textView_new_user"
+        android:id="@+id/editText_confirmation" />
 
 
 </RelativeLayout>

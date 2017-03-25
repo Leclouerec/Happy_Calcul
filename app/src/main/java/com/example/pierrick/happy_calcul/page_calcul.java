@@ -285,8 +285,20 @@ public class page_calcul extends AppCompatActivity {
         boolean aAjouter = false;
         int compteur = 0;
         do {
-            digit1 = nombreAleatoire(borneMin, borneMax);
-            digit2 = nombreAleatoire(borneMin, borneMax);
+
+            int pourcent = (int)(Math.random() * (10-1)) + 1;//on tire un nombre aléatoire entre 1 et 10 pour calculer le pourcentage
+            //de chance pour tirer un calcul 2x2
+            Log.e("pourcent", " : " + pourcent + " pourcetnfat : " + pourcentage2x2/10);
+            if (pourcent >= (100-pourcentage2x2)/10){
+                digit1 = nombreAleatoire(10, borneMax);
+                digit2 = nombreAleatoire(10, borneMax);
+            }
+
+            else{
+                digit1 = nombreAleatoire(borneMin, borneMax);
+                digit2 = nombreAleatoire(borneMin, borneMax);
+            }
+
 
             if(digit1<=digit2)
                 aAjouter = calcul.aAjouter(digit1,digit2, tableauCalcul);

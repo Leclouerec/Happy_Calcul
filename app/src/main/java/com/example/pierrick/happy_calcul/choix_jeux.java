@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -30,8 +31,6 @@ public class choix_jeux extends AppCompatActivity {
         setContentView(R.layout.activity_choix_jeux);
 
 
-
-
         InputStream is = null;
         InputStream is2 = null;
 
@@ -46,7 +45,8 @@ public class choix_jeux extends AppCompatActivity {
         }
 
 
-        profilUser = new ReadXMLFileCurrentUser(is);
+        File f = new File(this.getFilesDir(), connexion.current.getName()+".xml");
+        profilUser = new ReadXMLFileCurrentUser(f);
 
         try {
             AssetManager am = this.getAssets();
@@ -171,6 +171,9 @@ public class choix_jeux extends AppCompatActivity {
         catch (IOException e) {
             Log.e("Exception", "File write failed: " + e.toString());
         }
+
+
+
 
     }
 

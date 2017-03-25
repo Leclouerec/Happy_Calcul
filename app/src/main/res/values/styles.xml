@@ -29,15 +29,15 @@
         <item name="android:adjustViewBounds">true</item>
         <item name="android:scaleType">centerInside</item>
         <item name="android:background">@android:color/transparent</item>
-        <item name="android:onClick">home</item>s
+        <item name="android:onClick">home</item>
 
 
     </style>
 
     <style name="btnAdd" >
 
-        <item name="android:layout_width">50dp</item>
-        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_width">70dp</item>
+        <item name="android:layout_height">70dp</item>
         <item name="android:layout_alignParentBottom">true</item>
         <item name="android:layout_marginBottom">151dp</item>
         <item name="android:layout_centerHorizontal">true</item>
@@ -46,6 +46,18 @@
         <item name="android:scaleType">centerInside</item>
         <item name="android:background">@android:color/transparent</item>
         <item name="android:onClick">add</item>
+    </style>
+
+    <style name="btnTrash" >
+
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:src">@drawable/trash</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:scaleType">centerInside</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:onClick">delete</item>
     </style>
 
 </resources>

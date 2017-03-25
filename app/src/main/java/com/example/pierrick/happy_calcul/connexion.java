@@ -77,7 +77,10 @@ public class connexion extends AppCompatActivity {
             //Do something witht the exception
         }
 
-        fileUsers = new ReadXMLFileUsers(is, f);
+        //fileUsers = new ReadXMLFileUsers(is, f);
+
+        File f2 = new File(this.getFilesDir(), "users.xml");
+        fileUsers = new ReadXMLFileUsers(f2);
          Log.e("tesjt", " list " + fileUsers.getUsers().get(0).getName() + " mot de passe " + fileUsers.getUsers().get(0).getMdp());
     }
 
@@ -89,19 +92,17 @@ public class connexion extends AppCompatActivity {
         boolean test = fileUsers.estPresent(pseudo.getText().toString(), mdp.getText().toString());
         int index = fileUsers.getPosition();
 
+        if((pseudo.getText().toString().equals("admin"))&&(mdp.getText().toString().equals("admin")))
+        {
+            current = new user(pseudo.getText().toString(), mdp.getText().toString());
+            Intent intent = new Intent(connexion.this, listeUtilisateurs.class);
+            startActivity(intent);
+        }
         if(test){
-            if(pseudo.getText().toString().equals("admin"))
-            {
-                current = new user(pseudo.getText().toString(), mdp.getText().toString());
-                Intent intent = new Intent(connexion.this, listeUtilisateurs.class);
-                startActivity(intent);
-            }
-            else{
-                current = new user(pseudo.getText().toString(), mdp.getText().toString());
-                Intent intent = new Intent(connexion.this, choix_jeux.class);
-                startActivity(intent);
-            }
 
+            current = new user(pseudo.getText().toString(), mdp.getText().toString());
+            Intent intent = new Intent(connexion.this, choix_jeux.class);
+            startActivity(intent);
         }
         else
             Toast.makeText(this, "Erreur de connexion", Toast.LENGTH_SHORT).show();

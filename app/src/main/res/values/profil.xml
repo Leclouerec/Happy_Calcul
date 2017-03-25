@@ -6,11 +6,11 @@
     <string name="profil_prompt">Choisir un profil</string>
 
     <string-array name="profil">
-        <item>CE1</item>
-        <item>CE2</item>
-        <item>CM1</item>
-        <item>CM2</item>
-        <item>6 ème</item>
+        <item>ce1</item>
+        <item>ce2</item>
+        <item>cm1</item>
+        <item>cm2</item>
+        <item>sixieme</item>
     </string-array>
 
     <string-array name="tables">

@@ -28,9 +28,21 @@ public class ReadXMLFileCurrentUser {
 
 
     private static InputStream is;
+    private static File f;
+    private static boolean isFile = false;
 
     public ReadXMLFileCurrentUser(InputStream _is) {
         is = _is;
+
+        System.out.println("*************PROLOGUE************");
+
+        read();
+
+    }
+
+    public ReadXMLFileCurrentUser(File _f) {
+        f = _f;
+        isFile = true;
 
         System.out.println("*************PROLOGUE************");
 
@@ -60,7 +72,14 @@ public class ReadXMLFileCurrentUser {
             System.out.println("repertoire courant " + System.getProperties().get("user.dir"));
             //final Document document= builder.parse(new File("/Users/studlerobin/Downloads/Happy_Calcul/app/src/main/assets/users.xml"));
 
-            final Document document = builder.parse(is);
+            Document document = builder.newDocument();
+            if(!(isFile)){
+                document = builder.parse(is);
+            }
+            else{
+                document = builder.parse(f);
+            }
+
 
 
             //Affiche du prologue

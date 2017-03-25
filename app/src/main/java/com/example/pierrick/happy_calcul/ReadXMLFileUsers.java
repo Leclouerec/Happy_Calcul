@@ -44,15 +44,26 @@ import static java.lang.System.in;
 
 public class ReadXMLFileUsers {
 
-    private static List<user> users = new ArrayList<user>();
+    public static List<user> users = new ArrayList<user>();
     private static InputStream is;
     private int pos = -1;
     private static File f;
+    private static boolean docum = false;
 
-    public ReadXMLFileUsers(InputStream _is, File _f){
+    public ReadXMLFileUsers(InputStream _is){
         users = new ArrayList<user>();
         is =_is;
+
+        System.out.println("*************PROLOGUE************");
+
+        read();
+
+    }
+
+    public ReadXMLFileUsers(File _f){
+        users = new ArrayList<user>();
         f = _f;
+        docum = true;
 
 
         System.out.println("*************PROLOGUE************");
@@ -62,7 +73,6 @@ public class ReadXMLFileUsers {
         read();
 
     }
-
 
     public List<user> getUsers() {
         return users;
@@ -90,8 +100,14 @@ public class ReadXMLFileUsers {
             System.out.println("repertoire courant " +System.getProperties().get("user.dir") );
             //final Document document= builder.parse(new File("/Users/studlerobin/Downloads/Happy_Calcul/app/src/main/assets/users.xml"));
 
-            final Document document = builder.parse(is);
-            //final Document document = builder.parse(f);
+            Document document = builder.newDocument();
+            if(!(docum)){
+                document = builder.parse(is);
+            }else{
+                document = builder.parse(f);
+            }
+
+            //
 
 
             //Affiche du prologue
