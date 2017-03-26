@@ -138,40 +138,6 @@ public class ReadXMLFileUsers {
 
 
 
-                    /*try {
-
-                        Log.e("je suis la"," ta mere");
-
-                        Element test = (Element) document.createElement("bibliotheque");
-                        test.appendChild(document.createTextNode("allez"));
-
-                        personne.appendChild(test);
-
-
-                        TransformerFactory transformerFactory = TransformerFactory.newInstance();
-                        Transformer transformer = transformerFactory.newTransformer();
-                        DOMSource source = new DOMSource(document);
-
-                        //String theString = istoString();
-
-                        //Log.e("le string", " chemin " + theString);
-
-                        StreamResult result = new StreamResult(new File("stp.xml"));
-
-                        transformer.transform(source, result);
-
-                        System.out.println("Done");
-
-                    } catch (Exception e) {
-
-                        e.printStackTrace();
-
-                    }*/
-
-
-                    //test();
-
-
 
                     //Affichage d'une personne
                     System.out.println("\n*************User************");
@@ -190,18 +156,7 @@ public class ReadXMLFileUsers {
                     final user utilisateur= new user(name.getTextContent(), mdp.getTextContent());
                     users.add(utilisateur);
 
-            /*
-             * Etape 7 : récupération des numéros de téléphone
-             */
-                    /*final NodeList telephones = racine.getElementsByTagName("level");
-                    final int nbTelephonesElements = telephones.getLength();
 
-                    for(int j = 0; j<nbTelephonesElements; j++) {
-                        final Element telephone = (Element) telephones.item(j);
-
-                        //Affichage du téléphone
-                        System.out.println(telephone.getAttribute("type") + " : " + telephone.getTextContent());
-                    }*/
                 }
             }
             for (Iterator<user> i = users.iterator(); i.hasNext();
@@ -212,12 +167,6 @@ public class ReadXMLFileUsers {
 
 
 
-
-
-
-            /*Node test = document.createElement("test");
-            test.setTextContent("allo");
-            racine.appendChild(test);*/
         }
 
 

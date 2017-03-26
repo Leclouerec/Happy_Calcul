@@ -149,7 +149,115 @@ public class WriteXMLFileUsers {
 
     }
 
+    //supprime l'utilisateur du fichier des utilisateurs et son fichier profil
+    public static void delete(String _name) {
 
+        List<user> users = new ArrayList<user>();
+
+        /*
+         * Etape 1 : récupération d'une instance de la classe "DocumentBuilderFactory"
+         */
+        final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+
+        try {
+            /*
+             * Etape 2 : création d'un parseur
+             */
+            final DocumentBuilder builder = factory.newDocumentBuilder();
+
+        /*
+         * Etape 3 : création d'un Document
+         *
+         *
+         */
+
+            System.out.println("repertoire courant " +System.getProperties().get("user.dir") );
+            //final Document document= builder.parse(new File("/Users/studlerobin/Downloads/Happy_Calcul/app/src/main/assets/users.xml"));
+
+            //final Document document = builder.parse(is);
+            final Document document = builder.parse(f);
+
+
+            //Affiche du prologue
+            System.out.println("*************PROLOGUE************");
+            System.out.println("version : " + document.getXmlVersion());
+            System.out.println("encodage : " + document.getXmlEncoding());
+            System.out.println("standalone : " + document.getXmlStandalone());
+
+        /*
+         * Etape 4 : récupération de l'Element racine
+         */
+            final Element racine = document.getDocumentElement();
+
+
+            //Affichage de l'élément racine
+            System.out.println("\n*************RACINE************");
+            System.out.println(racine.getNodeName());
+
+        /*
+         * Etape 5 : récupération des personnes
+         */
+            final NodeList racineNoeuds = racine.getChildNodes();
+            final int nbRacineNoeuds = racineNoeuds.getLength();
+
+            for (int i = 0; i<nbRacineNoeuds; i++) {
+                if(racineNoeuds.item(i).getNodeType() == Node.ELEMENT_NODE) {
+                    final Element personne = (Element) racineNoeuds.item(i);
+
+                    System.out.println("\n*************User************");
+
+                    final Element name = (Element) personne.getElementsByTagName("name").item(0);
+                    final Element mdp = (Element) personne.getElementsByTagName("mdp").item(0);
+
+                    //Affichage du nom et du prénom
+                    System.out.println("name : " + name.getTextContent());
+                    System.out.println("mdp : " + mdp.getTextContent());
+
+
+                    if((name.getTextContent().toString().equals(_name))){
+                        Log.e("ALLO"," ");
+                        personne.getParentNode().removeChild(personne);
+                    }
+
+                    final user utilisateur= new user(name.getTextContent().toString(), mdp.getTextContent().toString());
+                    users.add(utilisateur);
+
+                }
+            }
+            for (Iterator<user> i = users.iterator(); i.hasNext();
+                    ) {
+                user item = i.next();
+                System.out.println("mot de passe "+ item.getMdp() + " name : " + item.getName());
+            }
+
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            DOMSource source = new DOMSource(document);
+            StreamResult result = new StreamResult(f);
+
+            // Output to console for testing
+            // StreamResult result = new StreamResult(System.out);
+
+            transformer.transform(source, result);
+
+
+        }
+
+
+        catch (final ParserConfigurationException e) {
+            e.printStackTrace();
+        }
+        catch (final SAXException e) {
+            e.printStackTrace();
+        }
+        catch (final IOException e) {
+            e.printStackTrace();
+        }
+        catch (TransformerException tfe) {
+            tfe.printStackTrace();
+        }
+
+    }
 
 
 
@@ -262,5 +370,7 @@ public class WriteXMLFileUsers {
         }
 
     }
+
+
 
 }
