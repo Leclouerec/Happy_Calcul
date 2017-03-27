@@ -1,6 +1,7 @@
 package com.example.pierrick.happy_calcul;
 
 import android.content.Context;
+import android.provider.CalendarContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
@@ -11,13 +12,22 @@ import android.widget.TextView;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 public class resultat extends AppCompatActivity {
 
     public static String resGauche = "";
     public static String resDroite = "";
-    public static int resulat=0;
+    public static int resultat=0;
     public static boolean changementLevel = false;
+    public static List<calcul> calculs = new ArrayList<calcul>();
+    private WriteXMLFileHistorique fileHistorique;
+    public String heure = "";
+    public String jour = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +42,27 @@ public class resultat extends AppCompatActivity {
 
         gauche.setText(Html.fromHtml(resGauche));
         droite.setText(Html.fromHtml(resDroite));
-        Log.e("resultat " , " " + resulat );
+        Log.e("resultat " , " " + resultat );
         Log.e("serie " , " " + connexion.current.getSerie() );
-        res.setText(resulat + " / 20");
+        res.setText(resultat + " / 20");
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yy");
+        SimpleDateFormat dateFormat2 = new SimpleDateFormat("HH:mm:ss");
+        Date date = new Date();
+
+        jour = dateFormat.format(date);
+        heure = dateFormat2.format(date);
+
+
+        File f = new File(this.getFilesDir(),jour + heure + ".xml");
+        fileHistorique = new WriteXMLFileHistorique(f);
+        fileHistorique.newHistorique(calculs);
+        fileHistorique.read();
+
+
+        File f2 = new File(this.getFilesDir(), connexion.current.getName() + ".xml");
+        fileHistorique.addHistorique(f2, jour, heure, String.valueOf(resultat));
+        fileHistorique.read2();
 
 
         updateProfil();
@@ -43,7 +71,7 @@ public class resultat extends AppCompatActivity {
     }
 
     public void updateProfil(){
-        if((resulat/0.2)>= page_calcul.getPourcentageSuivant()){
+        if((resultat/0.2)>= page_calcul.getPourcentageSuivant()){
             connexion.current.setSerie(connexion.current.getSerie()+1);
         }
         else{
@@ -65,7 +93,7 @@ public class resultat extends AppCompatActivity {
 
         resGauche="";
         resDroite="";
-        resulat = 0;
+        resultat = 0;
 
         button b = new button();
         b.home(view, this);

@@ -45,9 +45,6 @@ public class connexion extends AppCompatActivity {
 
 
 
-
-
-
         String test = "";
         InputStream is = null;
         File f = new File(this.getFilesDir(), "stp.xml");

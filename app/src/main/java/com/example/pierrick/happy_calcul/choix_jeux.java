@@ -16,6 +16,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class choix_jeux extends AppCompatActivity {
 
@@ -29,6 +32,22 @@ public class choix_jeux extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choix_jeux);
+
+        Calendar c = Calendar.getInstance();
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
+        SimpleDateFormat dateFormat2 = new SimpleDateFormat("HH:mm:ss");
+        Date date = new Date();
+
+        String day = String.valueOf(c.get(Calendar.DAY_OF_MONTH));
+        String month = String.valueOf(c.get(Calendar.MONTH));
+        String year = String.valueOf(c.get(Calendar.YEAR));
+        String hour = String.valueOf(c.get(Calendar.HOUR));
+        String minute = String.valueOf(c.get(Calendar.MINUTE));
+        String second = String.valueOf(c.get(Calendar.SECOND));
+
+        Log.e("date", " ,test :" + dateFormat.format(date) + " ,test2 : " + dateFormat2.format(date));
+
 
 
         InputStream is = null;

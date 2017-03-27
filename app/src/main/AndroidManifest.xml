@@ -32,7 +32,8 @@
         <activity android:name=".resultat" />
         <activity android:name=".listeUtilisateurs" />
         <activity android:name=".profil_activity" />
-        <activity android:name=".historique"></activity>
+        <activity android:name=".historique" />
+        <activity android:name=".historique_detaille"></activity>
     </application>
 
 </manifest>

@@ -190,8 +190,8 @@ public class page_calcul extends AppCompatActivity {
 
         if(Integer.parseInt(result) == gauche * droite){
             Toast.makeText(context, "Resultat : Correct", Toast.LENGTH_SHORT).show();
-            com.example.pierrick.happy_calcul.resultat.resulat++;
-            Log.e("res", " " + com.example.pierrick.happy_calcul.resultat.resulat);
+            com.example.pierrick.happy_calcul.resultat.resultat++;
+            Log.e("res", " " + com.example.pierrick.happy_calcul.resultat.resultat);
             juste = true;
         }
         else{
@@ -210,7 +210,7 @@ public class page_calcul extends AppCompatActivity {
             else
                 com.example.pierrick.happy_calcul.resultat.resDroite += "\n"+"<br>" + digitGauche.getText().toString() + " X " + digitDroite.getText().toString() + " = " +" <font color=#cc0029>"+ result+"</font>"+" ("+(gauche * droite)+") ";
 
-        Log.e("fdp", " apres " + resultatGauche.getText().toString());
+        com.example.pierrick.happy_calcul.resultat.calculs.add(new calcul(Integer.parseInt(digitGauche.getText().toString()),Integer.parseInt(digitDroite.getText().toString()), Integer.parseInt(result)));
         resultat.setText(null);
 
 

@@ -39,18 +39,18 @@
         android:layout_height="600dp"
         android:layout_marginLeft="40dp"
         android:layout_above="@+id/imageButton_add"
-        android:layout_alignEnd="@+id/textView_historique">
-        <RelativeLayout
-            android:layout_width="400dp"
-            android:layout_height="600dp"
-            android:id="@+id/historique"
-            android:layout_below="@+id/textView_historique"
-            android:layout_alignEnd="@+id/textView_historique"
-            android:layout_marginEnd="70dp"
-            android:layout_marginLeft="40dp">
+        android:layout_alignEnd="@+id/textView_historique"></ScrollView>
+
+    <RelativeLayout
+        android:layout_width="400dp"
+        android:layout_height="600dp"
+        android:id="@+id/historique"
+        android:layout_marginLeft="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="122dp">
 
 
-        </RelativeLayout>
-    </ScrollView>
+    </RelativeLayout>
 
 </RelativeLayout>

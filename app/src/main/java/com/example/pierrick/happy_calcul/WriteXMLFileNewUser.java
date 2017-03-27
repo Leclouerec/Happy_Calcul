@@ -74,6 +74,9 @@ public class WriteXMLFileNewUser {
             pourcentage.appendChild(doc.createTextNode("0"));
             profil.appendChild(pourcentage);
 
+            Element historique = doc.createElement("historique");
+            rootElement.appendChild(historique);
+
             // write the content into xml file
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
