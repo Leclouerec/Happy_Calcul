@@ -24,7 +24,7 @@ import java.io.OutputStreamWriter;
 
 public class connexion extends AppCompatActivity {
 
-    private ReadXMLFileUsers fileUsers;
+    public static ReadXMLFileUsers fileUsers;
     public static user current= new user();
     public static boolean firstConnexion = true;
 

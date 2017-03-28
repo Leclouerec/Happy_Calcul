@@ -14,16 +14,19 @@ import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.io.File;
 import java.util.Iterator;
 
 public class listeUtilisateurs extends AppCompatActivity {
 
-    public static user current;
+    public static user current = new user("");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liste_utilisateurs);
+
+        current.setName("admin");
 
         Button myButton = new Button(this);
         myButton.setText("push");
@@ -32,6 +35,8 @@ public class listeUtilisateurs extends AppCompatActivity {
         RelativeLayout rl = (RelativeLayout)findViewById(R.id.liste_utilisateurs);
 
 
+        File f2 = new File(this.getFilesDir(), "users.xml");
+        connexion.fileUsers = new ReadXMLFileUsers(f2);
         int taille = ReadXMLFileUsers.users.size();
 
         final TextView[] myTextViews = new TextView[taille];
@@ -61,7 +66,7 @@ public class listeUtilisateurs extends AppCompatActivity {
                     Log.e("CLICK", " test" + currentTextView.getText().toString());
                     //Intent intent = new Intent(listeUtilisateurs.this, apprentissage.class);
                     //startActivity(intent);
-                    current = new user(currentTextView.getText().toString());
+                    connexion.current.setName(currentTextView.getText().toString());
                     Intent intent = new Intent(listeUtilisateurs.this, historique.class);
                     startActivity(intent);
                 }
@@ -83,4 +88,11 @@ public class listeUtilisateurs extends AppCompatActivity {
         Intent intent = new Intent(listeUtilisateurs.this, new_user.class);
         startActivity(intent);
     }
+
+    public void logout(View view){
+        connexion.firstConnexion=true;
+        Intent intent = new Intent(this, connexion.class);
+        startActivity(intent);
+    }
+
 }

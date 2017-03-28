@@ -260,6 +260,102 @@ public class WriteXMLFileUsers {
     }
 
 
+    //mise à jour de l'utilisateur selon son evolution
+    public static void majUser(File _f, user current) {
+
+
+        /*
+         * Etape 1 : récupération d'une instance de la classe "DocumentBuilderFactory"
+         */
+        final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+
+        try {
+            /*
+             * Etape 2 : création d'un parseur
+             */
+            final DocumentBuilder builder = factory.newDocumentBuilder();
+
+        /*
+         * Etape 3 : création d'un Document
+         *
+         *
+         */
+
+            System.out.println("repertoire courant " +System.getProperties().get("user.dir") );
+            //final Document document= builder.parse(new File("/Users/studlerobin/Downloads/Happy_Calcul/app/src/main/assets/users.xml"));
+
+            //final Document document = builder.parse(is);
+            final Document document = builder.parse(_f);
+
+
+            //Affiche du prologue
+            System.out.println("*************PROLOGUE************");
+            System.out.println("version : " + document.getXmlVersion());
+            System.out.println("encodage : " + document.getXmlEncoding());
+            System.out.println("standalone : " + document.getXmlStandalone());
+
+        /*
+         * Etape 4 : récupération de l'Element racine
+         */
+            final Element racine = document.getDocumentElement();
+
+
+            //Affichage de l'élément racine
+            System.out.println("\n*************RACINE************");
+            System.out.println(racine.getNodeName());
+
+
+            Element profil = (Element) racine.getElementsByTagName("profil").item(0);
+
+            //Affichage d'une personne
+            System.out.println("\n*************User************");
+
+
+            final String level = profil.getAttribute("level");
+            System.out.println("level :" + level);
+
+            final Element numLevel = (Element) profil.getElementsByTagName("numLevel").item(0);
+            final Element pourcentage = (Element) profil.getElementsByTagName("pourcentage").item(0);
+            final Element serie = (Element) profil.getElementsByTagName("serie").item(0);
+
+            //Affichage du nom et du prénom
+            System.out.println("numLevel : " + numLevel.getTextContent());
+            System.out.println("poucentage : " + pourcentage.getTextContent());
+            System.out.println("serie : " + serie.getTextContent());
+
+            numLevel.setTextContent(String.valueOf(current.getNumLevel()));
+            serie.setTextContent(String.valueOf(current.getSerie()));
+
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            DOMSource source = new DOMSource(document);
+            StreamResult result = new StreamResult(_f);
+
+            // Output to console for testing
+            // StreamResult result = new StreamResult(System.out);
+
+            transformer.transform(source, result);
+
+
+        }
+
+
+        catch (final ParserConfigurationException e) {
+            e.printStackTrace();
+        }
+        catch (final SAXException e) {
+            e.printStackTrace();
+        }
+        catch (final IOException e) {
+            e.printStackTrace();
+        }
+        catch (TransformerException tfe) {
+            tfe.printStackTrace();
+        }
+
+    }
+
+
 
     //uniquement pour tester si l'ecriture c'est bien faite
     public static void read() {

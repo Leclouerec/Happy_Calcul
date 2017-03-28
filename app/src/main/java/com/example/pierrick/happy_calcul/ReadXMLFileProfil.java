@@ -98,39 +98,6 @@ public class ReadXMLFileProfil {
 
 
 
-                    /*try {
-
-                        Log.e("je suis la"," ta mere");
-
-                        Element test = (Element) document.createElement("bibliotheque");
-                        test.appendChild(document.createTextNode("allez"));
-
-                        personne.appendChild(test);
-
-
-                        TransformerFactory transformerFactory = TransformerFactory.newInstance();
-                        Transformer transformer = transformerFactory.newTransformer();
-                        DOMSource source = new DOMSource(document);
-
-                        //String theString = istoString();
-
-                        //Log.e("le string", " chemin " + theString);
-
-                        StreamResult result = new StreamResult(new File("stp.xml"));
-
-                        transformer.transform(source, result);
-
-                        System.out.println("Done");
-
-                    } catch (Exception e) {
-
-                        e.printStackTrace();
-
-                    }*/
-
-
-                    //test();
-
 
 
                     //Affichage d'une personne
@@ -147,8 +114,6 @@ public class ReadXMLFileProfil {
                     final Element pourcentage2x2 = (Element) profil.getElementsByTagName("pourcentage2X2").item(0);
                     //final Element mdp = (Element) personne.getElementsByTagName("mdp").item(0);
 
-                    //Affichage du nom et du prénom
-                    System.out.println("level : " + premierDigit.getTextContent());
                     //System.out.println("mdp : " + mdp.getTextContent());
                     int temp = Integer.parseInt(profil.getAttribute("num"));
                     int firstDigit = Integer.parseInt(premierDigit.getTextContent());

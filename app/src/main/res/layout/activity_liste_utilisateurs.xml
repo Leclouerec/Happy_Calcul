@@ -51,4 +51,9 @@
         </RelativeLayout>
     </ScrollView>
 
+    <ImageButton
+        style = "@style/btnLogout"
+        android:id="@+id/imageButton_logout"
+        />
+
 </RelativeLayout>

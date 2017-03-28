@@ -196,6 +196,50 @@ public class WriteXMLFileHistorique {
 
 
 
+    public static void addHistoriqueNew(File fi,String jour, String heure, String res){
+            try {
+
+                DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+                DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+
+                // root elements
+                Document doc = docBuilder.newDocument();
+                Element rootElement = doc.createElement("historique");
+                doc.appendChild(rootElement);
+
+                // user elements
+                Element partie = doc.createElement("partie");
+                rootElement.appendChild(partie);
+
+                partie.setAttribute("date",jour);
+                partie.setAttribute("heure",heure);
+                partie.setAttribute("res",res);
+
+
+                // write the content into xml file
+                TransformerFactory transformerFactory = TransformerFactory.newInstance();
+                Transformer transformer = transformerFactory.newTransformer();
+                DOMSource source = new DOMSource(doc);
+            /*final File test = new File ("file:///android_asset/qoqoqo");
+            test.mkdirs();*/
+                StreamResult result = new StreamResult(fi);
+
+                // Output to console for testing
+                // StreamResult result = new StreamResult(System.out);
+
+                transformer.transform(source, result);
+
+                System.out.println("File saved!");
+
+            } catch (ParserConfigurationException pce) {
+                pce.printStackTrace();
+            } catch (TransformerException tfe) {
+                tfe.printStackTrace();
+            }
+
+        }
+
+
     public static void addHistorique(File fi,String jour, String heure, String res){
         try {
 
@@ -215,13 +259,12 @@ public class WriteXMLFileHistorique {
             }
 
 
-            final Element racine = doc.getDocumentElement();
-
-            final Element historique = (Element) racine.getElementsByTagName("historique").item(0);
+            Node users= doc.getFirstChild();
 
             // user elements
             Element partie = doc.createElement("partie");
-            historique.appendChild(partie);
+            users.appendChild(partie);
+
 
             partie.setAttribute("date",jour);
             partie.setAttribute("heure",heure);
@@ -251,9 +294,10 @@ public class WriteXMLFileHistorique {
     }
 
 
-
-
+    //uniquement pour tester si l'ecriture c'est bien faite
     public static void read2() {
+
+        List<String> operation = new ArrayList<String>();
 
         /*
          * Etape 1 : récupération d'une instance de la classe "DocumentBuilderFactory"
@@ -272,9 +316,10 @@ public class WriteXMLFileHistorique {
          *
          */
 
-            System.out.println("repertoire courant " + System.getProperties().get("user.dir"));
+            System.out.println("repertoire courant " +System.getProperties().get("user.dir") );
             //final Document document= builder.parse(new File("/Users/studlerobin/Downloads/Happy_Calcul/app/src/main/assets/users.xml"));
 
+            //final Document document = builder.parse(is);
             final Document document = builder.parse(f);
 
 
@@ -294,30 +339,67 @@ public class WriteXMLFileHistorique {
             System.out.println("\n*************RACINE************");
             System.out.println(racine.getNodeName());
 
-            Element profil = (Element) racine.getElementsByTagName("historique").item(0);
-            Element partie = (Element) profil.getElementsByTagName("partie").item(0);
+        /*
+         * Etape 5 : récupération des personnes
+         */
+            final NodeList racineNoeuds = racine.getChildNodes();
+            final int nbRacineNoeuds = racineNoeuds.getLength();
 
-            //Affichage d'une personne
-            System.out.println("\n*************User************");
+            for (int i = 0; i<nbRacineNoeuds; i++) {
+                if(racineNoeuds.item(i).getNodeType() == Node.ELEMENT_NODE) {
+                    final Element personne = (Element) racineNoeuds.item(i);
 
-
-            final String date = partie.getAttribute("date");
-            final String heure = partie.getAttribute("heure");
-            final String res = partie.getAttribute("res");
-            System.out.println("date : " + date);
-            System.out.println("heure : " + heure);
-            System.out.println("res : " + res);
+                    System.out.println("\n*************User************");
 
 
+                    //Affichage du nom et du prénom
+                    final String date = personne.getAttribute("date");
+                    final String heure = personne.getAttribute("heure");
+                    final String res = personne.getAttribute("res");
+                    System.out.println("date : " + date);
+                    System.out.println("heure : " + heure);
+                    System.out.println("res : " + res);
 
 
 
-        } catch (final ParserConfigurationException e) {
-            e.printStackTrace();
-        } catch (final SAXException e) {
-            e.printStackTrace();
-        } catch (final IOException e) {
+
+                    operation.add(date+heure+res);
+
+                }
+            }
+            for (Iterator<String> i = operation.iterator(); i.hasNext();
+                    ) {
+                String item = i.next();
+                System.out.println("mot de passe "+ item);
+            }
+
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            DOMSource source = new DOMSource(document);
+            StreamResult result = new StreamResult(f);
+
+            // Output to console for testing
+            // StreamResult result = new StreamResult(System.out);
+
+            transformer.transform(source, result);
+
+
+        }
+
+
+        catch (final ParserConfigurationException e) {
             e.printStackTrace();
         }
+        catch (final SAXException e) {
+            e.printStackTrace();
+        }
+        catch (final IOException e) {
+            e.printStackTrace();
+        }
+        catch (TransformerException tfe) {
+            tfe.printStackTrace();
+        }
+
     }
+
 }

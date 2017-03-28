@@ -23,7 +23,7 @@
 
     <ImageButton
         style = "@style/btnTrash"
-        android:id="@+id/imageButton_add"
+        android:id="@+id/imageButton_trash"
         />
 
     <ImageButton
@@ -32,17 +32,27 @@
         />
 
 
+    <TextView
+        android:text=""
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView_historique"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="44dp"
+        android:textSize="33sp"
+        android:id="@+id/textView_detail" />
 
     <ScrollView
         android:id="@+id/ScrollView_historique"
-        android:layout_width="400dp"
+        android:layout_width="700dp"
         android:layout_height="600dp"
         android:layout_marginLeft="40dp"
-        android:layout_above="@+id/imageButton_add"
-        android:layout_alignEnd="@+id/textView_historique"></ScrollView>
+        android:layout_below="@+id/textView_detail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="52dp">
 
     <RelativeLayout
-        android:layout_width="400dp"
+        android:layout_width="700dp"
         android:layout_height="600dp"
         android:id="@+id/historique"
         android:layout_marginLeft="40dp"
@@ -52,5 +62,6 @@
 
 
     </RelativeLayout>
+    </ScrollView>
 
 </RelativeLayout>

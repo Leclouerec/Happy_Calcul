@@ -9,10 +9,32 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.pierrick.happy_calcul.choix_jeux">
 
+
+    <ImageButton
+        style = "@style/btnLogout"
+        android:id="@+id/imageButton_logout_jeux"
+        />
+
     <Button
         android:layout_width="270dp"
         android:layout_height="150dp"
-        android:text="Apprentissage"
+        android:text="Historique"
+        android:id="@+id/button_historique"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        android:onClick="historique"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/button_table" />
+
+    <Button
+        android:layout_width="270dp"
+        android:layout_height="150dp"
+        android:text="JOUER"
         android:id="@+id/button_apprentissage"
         android:textColor="#000000"
         android:textSize="30sp"
@@ -20,11 +42,11 @@
         android:shadowDx="0"
         android:shadowDy="0"
         android:shadowRadius="5"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="188dp"
+        android:layout_marginTop="118dp"
         android:onClick="jouer"
-        style="@style/Widget.AppCompat.Button.Borderless" />
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_below="@+id/imageButton_logout_jeux"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="270dp"
@@ -37,15 +59,11 @@
         android:shadowDx="0"
         android:shadowDy="0"
         android:shadowRadius="5"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="298dp"
+        android:layout_marginBottom="138dp"
         android:onClick="pageTables"
-        style="@style/Widget.AppCompat.Button.Borderless" />
-
-
-
-
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/button_apprentissage" />
 
 
 </RelativeLayout>

@@ -1,5 +1,6 @@
 package com.example.pierrick.happy_calcul;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -84,6 +85,9 @@ public class new_user extends AppCompatActivity{
             Toast.makeText(this, "Confirmation de mot de passe erroné", Toast.LENGTH_SHORT).show();
 
         }
+
+        Intent intent = new Intent(new_user.this, listeUtilisateurs.class);
+        startActivity(intent);
 
     }
 

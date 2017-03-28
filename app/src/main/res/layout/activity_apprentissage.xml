@@ -44,7 +44,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="298dp"
-        android:onClick="jeux"
+        android:onClick="historique"
         style="@style/Widget.AppCompat.Button.Borderless" />
 
     <ImageButton

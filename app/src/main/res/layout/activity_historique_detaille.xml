@@ -24,7 +24,7 @@
 
     <ImageButton
         style = "@style/btnHome"
-        android:id="@+id/imageButton_home_table"
+        android:id="@+id/imageButton_home"
         />
 
     <TextView
@@ -57,6 +57,13 @@
         android:layout_marginEnd="13dp"
         android:layout_below="@+id/textView_historique"
         android:layout_toStartOf="@+id/textView_score" />
+
+    <ImageButton
+        style = "@style/btnArrow"
+        android:id="@+id/imageButton_previous_histo"
+        />
+
+
 
 
 </RelativeLayout>

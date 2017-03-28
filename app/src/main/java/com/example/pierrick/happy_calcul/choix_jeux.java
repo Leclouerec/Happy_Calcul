@@ -35,8 +35,8 @@ public class choix_jeux extends AppCompatActivity {
 
         Calendar c = Calendar.getInstance();
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
-        SimpleDateFormat dateFormat2 = new SimpleDateFormat("HH:mm:ss");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MMdd");
+        SimpleDateFormat dateFormat2 = new SimpleDateFormat("HHmmss");
         Date date = new Date();
 
         String day = String.valueOf(c.get(Calendar.DAY_OF_MONTH));
@@ -102,7 +102,7 @@ public class choix_jeux extends AppCompatActivity {
 
         Log.e("profil ", "bornepremiere : " + profil1.getBornePremiereDigit());
 
-       /* final ImageView image = (ImageView) findViewById(R.id.imageView_chrono);
+       /* final ImageView image = (ImageView) findViewByIzd(R.id.imageView_chrono);
         //int i = 0;
         final Handler handler = new Handler();
         Runnable runnable = new Runnable() {
@@ -157,7 +157,18 @@ public class choix_jeux extends AppCompatActivity {
 
 
     public void jouer(View view){
-        Intent intent = new Intent(this, apprentissage.class);
+        Intent intent = new Intent(choix_jeux.this, page_calcul.class);
+        startActivity(intent);
+    }
+
+    public void historique(View view){
+        Intent intent = new Intent(choix_jeux.this, historique.class);
+        startActivity(intent);
+    }
+
+    public void logout(View view){
+        connexion.firstConnexion=true;
+        Intent intent = new Intent(this, connexion.class);
         startActivity(intent);
     }
 

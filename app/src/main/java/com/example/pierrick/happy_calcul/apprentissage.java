@@ -36,5 +36,10 @@ public class apprentissage extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void historique(View view){
+        Intent intent = new Intent(apprentissage.this, historique.class);
+        startActivity(intent);
+    }
+
 
 }
