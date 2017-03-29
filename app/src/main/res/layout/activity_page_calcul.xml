@@ -100,11 +100,6 @@
             android:layout_marginStart="49dp" />
 
 
-        <ImageButton
-            style = "@style/btnArrow"
-            android:id="@+id/imageButton_previous_page_calcul"
-            />
-
 
 
         <ImageView

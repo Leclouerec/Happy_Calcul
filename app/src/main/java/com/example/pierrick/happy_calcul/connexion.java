@@ -101,7 +101,7 @@ public class connexion extends AppCompatActivity {
             Intent intent = new Intent(connexion.this, choix_jeux.class);
             startActivity(intent);
         }
-        else
+        else if (!(pseudo.getText().toString().equals("admin")))
             Toast.makeText(this, "Erreur de connexion", Toast.LENGTH_SHORT).show();
 
 

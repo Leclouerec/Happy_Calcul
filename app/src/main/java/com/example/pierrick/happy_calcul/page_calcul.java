@@ -82,7 +82,8 @@ public class page_calcul extends AppCompatActivity {
         Log.e("JE PASSE QUAND", " MEME" + choix_jeux.profil1.getBornePremiereDigit());
 
         profil1 = choix_jeux.profil1;
-        borneMax = profil1.getBornePremiereDigit();//se sont les mêmes bornes ...
+        borneMin = profil1.getBornePremiereDigit();
+        borneMax = profil1.getBorneDeuxiemeDigitDigit();//se sont les mêmes bornes ...
         serie = profil1.getSerie();
         pourcentageSuivant = profil1.getPourcentage();
         pourcentage2x2 = profil1.getPourcentage2x2();
@@ -188,33 +189,37 @@ public class page_calcul extends AppCompatActivity {
 
         Context context = this;
 
-        if(Integer.parseInt(result) == gauche * droite){
-            Toast.makeText(context, "Resultat : Correct", Toast.LENGTH_SHORT).show();
-            com.example.pierrick.happy_calcul.resultat.resultat++;
-            Log.e("res", " " + com.example.pierrick.happy_calcul.resultat.resultat);
-            juste = true;
-        }
-        else{
-            Toast.makeText(context, "Resultat : FAUX t'es nul", Toast.LENGTH_SHORT).show();
-            juste = false;
-        }
+        try{
+            if(Integer.parseInt(result) == gauche * droite){
+                com.example.pierrick.happy_calcul.resultat.resultat++;
+                Log.e("res", " " + com.example.pierrick.happy_calcul.resultat.resultat);
+                juste = true;
+            }
+            else{
+                juste = false;
+            }
 
-        if(numeroQuestion <=10)
-            if(juste)
-                com.example.pierrick.happy_calcul.resultat.resGauche += "\n" +"<br>"+digitGauche.getText().toString() + " X " + digitDroite.getText().toString() + " = " + " <font color=#29E830>"+result+"</font>";
+            if(numeroQuestion <=10)
+                if(juste)
+                    com.example.pierrick.happy_calcul.resultat.resGauche += "\n" +"<br>"+digitGauche.getText().toString() + " X " + digitDroite.getText().toString() + " = " + " <font color=#29E830>"+result+"</font>";
+                else
+                    com.example.pierrick.happy_calcul.resultat.resGauche += "\n" +"<br>"+ digitGauche.getText().toString() + " X " + digitDroite.getText().toString() + " = " + " <font color=#cc0029>"+result+"</font>" + " ("+(gauche * droite)+") ";
             else
-                com.example.pierrick.happy_calcul.resultat.resGauche += "\n" +"<br>"+ digitGauche.getText().toString() + " X " + digitDroite.getText().toString() + " = " + " <font color=#cc0029>"+result+"</font>" + " ("+(gauche * droite)+") ";
-        else
             if(juste)
                 com.example.pierrick.happy_calcul.resultat.resDroite += "\n" +"<br>"+ digitGauche.getText().toString() + " X " + digitDroite.getText().toString() + " = " + " <font color=#29E830>"+result+"</font>";
             else
                 com.example.pierrick.happy_calcul.resultat.resDroite += "\n"+"<br>" + digitGauche.getText().toString() + " X " + digitDroite.getText().toString() + " = " +" <font color=#cc0029>"+ result+"</font>"+" ("+(gauche * droite)+") ";
 
-        com.example.pierrick.happy_calcul.resultat.calculs.add(new calcul(Integer.parseInt(digitGauche.getText().toString()),Integer.parseInt(digitDroite.getText().toString()), Integer.parseInt(result)));
-        resultat.setText(null);
+            com.example.pierrick.happy_calcul.resultat.calculs.add(new calcul(Integer.parseInt(digitGauche.getText().toString()),Integer.parseInt(digitDroite.getText().toString()), Integer.parseInt(result)));
+            resultat.setText(null);
 
 
-        prochaineQuestion();
+            prochaineQuestion();
+        }
+        catch (NumberFormatException e) {
+            Toast.makeText(context, "Nombre trop grand", Toast.LENGTH_SHORT).show();
+        }
+
 
 
     }
@@ -408,14 +413,10 @@ public class page_calcul extends AppCompatActivity {
 
     private int readFromFile(Context context) {
 
-        Log.e("JE PASSE LA", " 1");
 
         String ret = "";
-        Log.e("JE PASSE LA", " 2");
         File path = context.getFilesDir();
-        Log.e("JE PASSE LA", " 3");
         File file = new File(path, "config.txt");
-        Log.e("JE PASSE LA", " 4");
         int length = (int) file.length();
 
         Log.e("taille", " " + length);
@@ -461,7 +462,6 @@ public class page_calcul extends AppCompatActivity {
             Log.e("Exception", "File write failed: " + e.toString());
         }
         int k = 0;
-
 
         for(int i = 1 ; i<= borneMax ; i++)
             for(int j = i; j<=borneMax ; j++){

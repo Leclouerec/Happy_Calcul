@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <profil nom ="6EME">
 	<level num="1">
-		<premierDigit>10</premierDigit>
+		<premierDigit>3</premierDigit>
 		<secondDigit>10</secondDigit>
 		<serie>5</serie>
 		<pourcentage2X2>0</pourcentage2X2>
 		<pourcentageSuivant>85</pourcentageSuivant>
 	</level>
 	<level num="2">
-		<premierDigit>15</premierDigit>
+		<premierDigit>1</premierDigit>
 		<secondDigit>15</secondDigit>
 		<serie>10</serie>
 		<pourcentage2X2>20</pourcentage2X2>
 		<pourcentageSuivant>85</pourcentageSuivant>
 	</level>
 	<level num="3">
-		<premierDigit>20</premierDigit>
+		<premierDigit>1</premierDigit>
 		<secondDigit>20</secondDigit>
 		<pourcentage2X2>50</pourcentage2X2>
 		<serie>0</serie>

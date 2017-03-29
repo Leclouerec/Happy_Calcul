@@ -5,11 +5,13 @@ import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.speech.RecognizerIntent;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -17,6 +19,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -83,9 +86,9 @@ public class choix_jeux extends AppCompatActivity {
         if(connexion.firstConnexion || resultat.changementLevel){
 
             Log.e("bornepremier", "fdpdigit" + profil1.getBornePremiereDigit());
-            tableauRedondance = new redondance(profil1.getBornePremiereDigit());//utile pour la redondance des calculs
+            tableauRedondance = new redondance(profil1.getBorneDeuxiemeDigitDigit());//utile pour la redondance des calculs
 
-            ecrireFichierRedondance(profil1.getBornePremiereDigit(),this, tableauRedondance.tableauCalcul);
+            ecrireFichierRedondance(profil1.getBorneDeuxiemeDigitDigit(),this, tableauRedondance.tableauCalcul);
 
             connexion.firstConnexion = false;
         }
@@ -165,6 +168,8 @@ public class choix_jeux extends AppCompatActivity {
         Intent intent = new Intent(choix_jeux.this, historique.class);
         startActivity(intent);
     }
+
+
 
     public void logout(View view){
         connexion.firstConnexion=true;

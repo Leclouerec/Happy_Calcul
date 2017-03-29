@@ -120,5 +120,10 @@
         android:layout_alignEnd="@+id/textView_new_user"
         android:id="@+id/editText_confirmation" />
 
+    <ImageButton
+        style = "@style/btnArrow"
+        android:id="@+id/imageButton_previous_page_new_user"
+        />
+
 
 </RelativeLayout>
