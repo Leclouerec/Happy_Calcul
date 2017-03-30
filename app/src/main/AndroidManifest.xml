@@ -15,25 +15,37 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".connexion">
+        <activity android:name=".connexion"
+
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".new_user" />
+        <activity android:name=".new_user"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".page_calcul"
-            android:windowSoftInputMode="stateAlwaysVisible" />
-        <activity android:name=".tables" />
-        <activity android:name=".apprentissage" />
-        <activity android:name=".choix_jeux" />
-        <activity android:name=".resultat" />
-        <activity android:name=".listeUtilisateurs" />
-        <activity android:name=".profil_activity" />
-        <activity android:name=".historique" />
-        <activity android:name=".historique_detaille"></activity>
+            android:windowSoftInputMode="stateAlwaysVisible"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".tables"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".apprentissage"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".choix_jeux"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".resultat"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".listeUtilisateurs"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".profil_activity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".historique"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".historique_detaille"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

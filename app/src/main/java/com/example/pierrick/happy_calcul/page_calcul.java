@@ -214,11 +214,15 @@ public class page_calcul extends AppCompatActivity {
             resultat.setText(null);
 
 
-            prochaineQuestion();
+
         }
         catch (NumberFormatException e) {
             Toast.makeText(context, "Nombre trop grand", Toast.LENGTH_SHORT).show();
+            com.example.pierrick.happy_calcul.resultat.calculs.add(new calcul(Integer.parseInt(digitGauche.getText().toString()),Integer.parseInt(digitDroite.getText().toString()), 0));
+            resultat.setText(null);
         }
+
+        prochaineQuestion();
 
 
 

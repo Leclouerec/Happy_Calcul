@@ -20,7 +20,8 @@
             android:gravity="center"
             android:background="@android:color/transparent"
             android:fontFamily="serif"
-            android:focusableInTouchMode="true"/>
+            android:focusableInTouchMode="true"
+            android:maxLength="5"/>
 
         <TextView
             android:text="2"
