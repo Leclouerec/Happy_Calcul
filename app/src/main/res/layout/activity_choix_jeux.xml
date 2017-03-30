@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -34,23 +35,6 @@
     <Button
         android:layout_width="270dp"
         android:layout_height="150dp"
-        android:text="JOUER"
-        android:id="@+id/button_apprentissage"
-        android:textColor="#000000"
-        android:textSize="30sp"
-        android:shadowColor="#A8A8A8"
-        android:shadowDx="0"
-        android:shadowDy="0"
-        android:shadowRadius="5"
-        android:layout_marginTop="118dp"
-        android:onClick="jouer"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_below="@+id/imageButton_logout_jeux"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:layout_width="270dp"
-        android:layout_height="150dp"
         android:text="Tables"
         android:id="@+id/button_table"
         android:textColor="#000000"
@@ -64,6 +48,32 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/button_apprentissage" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/logo"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:id="@+id/imageView" />
+
+    <Button
+        android:layout_width="270dp"
+        android:layout_height="150dp"
+        android:text="JOUER"
+        android:id="@+id/button_apprentissage"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        android:layout_marginTop="31dp"
+        android:onClick="jouer"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>
