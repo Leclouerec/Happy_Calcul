@@ -12,6 +12,8 @@ public class profil {
     private int serie;
     private int pourcentage;
     private int pourcentage2x2;
+    private String description;
+    private String nom;
 
     public profil(){
 
@@ -24,14 +26,24 @@ public class profil {
 
     }
 
-    public profil(int _num, int _bornePremiere, int _borneDeuxieme, int _serie, int _pourcentage, int _pourcentage2x2){
+
+
+    public profil(int _num, int _bornePremiere, int _borneDeuxieme, int _serie, int _pourcentage, int _pourcentage2x2, String _description){
         num = _num;
         bornePremiereDigit = _bornePremiere;
         borneDeuxiemeDigit = _borneDeuxieme;
         serie = _serie;
         pourcentage = _pourcentage;
         pourcentage2x2 = _pourcentage2x2;
+        description = _description;
+
     }
+
+    public profil(String _description, String _nom){
+        description = _description;
+        nom = _nom;
+    }
+
 
     public int getNum(){
         return num;
@@ -79,5 +91,20 @@ public class profil {
 
     public void setPourcentage2x2(int _pourcentage2x2){
         pourcentage2x2 = _pourcentage2x2;
+    }
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 }

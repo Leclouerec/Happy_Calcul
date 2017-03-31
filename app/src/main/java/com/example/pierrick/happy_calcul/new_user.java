@@ -1,7 +1,10 @@
 package com.example.pierrick.happy_calcul;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -12,6 +15,8 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Iterator;
 import java.util.List;
 
@@ -21,6 +26,7 @@ public class new_user extends AppCompatActivity{
     private Spinner spinner_profil;
     private WriteXMLFileUsers fileUsers;
     private WriteXMLFileNewUser fileNewUser;
+    private String description;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,14 +37,9 @@ public class new_user extends AppCompatActivity{
         ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.profil, R.layout.spinner_item);
         spinner_profil.setAdapter(adapter);
 
+
     }
 
-
-
-    public void addListenerOnSpinnerItemSelection() {
-        spinner_profil = (Spinner) findViewById(R.id.spinner_profil);
-        spinner_profil.setOnItemSelectedListener(new CustomOnItemSelectedListener());
-    }
 
     public void add(View view){
 
@@ -64,17 +65,16 @@ public class new_user extends AppCompatActivity{
             existant = true;
             Toast.makeText(this, "Pseudo interdit", Toast.LENGTH_SHORT).show();
         }
+        if(name.getText().toString().equals("")){
+            correct = false;
+            existant = true;
+            Toast.makeText(this, "Veuillez rentrer un nom valide", Toast.LENGTH_SHORT).show();
+        }
 
 
 
         File f = new File(this.getFilesDir(), "users.xml");
         File f2 = new File(this.getFilesDir(),name.getText().toString() +".xml");
-
-        File[] files = this.getFilesDir().listFiles();
-        for (int i = 0; i < files.length; i++)
-        {
-            Log.d("Files", "FileName:" + files[i].getName());
-        }
 
         if(correct){
 
@@ -117,7 +117,6 @@ public class new_user extends AppCompatActivity{
                 ) {
             user item = i.next();
             if((item.getName().equals( _pseudo))){
-                Log.e("POURQIOI", " pseudo : "+item.getName() + " ,mdp : " +item.getMdp());
                 return true;
             }
 
@@ -134,5 +133,39 @@ public class new_user extends AppCompatActivity{
         b.previous(context);
 
     }
+
+    public void info(View view){
+
+        InputStream is = null;
+        try {
+            AssetManager am = this.getAssets();
+            is = am.open(spinner_profil.getSelectedItem().toString()+".xml");
+
+
+
+        }catch(IOException ex) {
+            //Do something witht the exception
+        }
+
+        ReadXMLFileProfil profil = new ReadXMLFileProfil();
+        description = profil.readDescription(is);
+
+        new AlertDialog.Builder(this)
+                .setTitle("Information")
+                .setMessage(description)
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // continue with delete
+                        //finish();
+                        //startActivity(new Intent(getBaseContext(),jeux.class));
+
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_info)
+                .show();
+
+    }
+
+
 
 }

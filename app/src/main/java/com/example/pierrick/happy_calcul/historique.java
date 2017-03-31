@@ -28,8 +28,15 @@ public class historique extends AppCompatActivity {
         setContentView(R.layout.activity_historique);
 
         ImageButton b = (ImageButton) findViewById(R.id.imageButton_trash);
-        if(!(listeUtilisateurs.current.getName().equals("admin")))
+        TextView text = (TextView) findViewById(R.id.textView_detail);
+        if(!(listeUtilisateurs.current.getName().equals("admin"))){
             b.setVisibility(View.INVISIBLE);
+            text.setVisibility(View.INVISIBLE);
+        }else{
+            b.setVisibility(View.VISIBLE);
+            text.setVisibility(View.VISIBLE);
+        }
+
 
 
         TextView utilisateur = (TextView) findViewById(R.id.textView_historique);
@@ -77,7 +84,6 @@ public class historique extends AppCompatActivity {
         ReadXMLFileUsers file;
         connexion.fileUsers = new ReadXMLFileUsers(f);
 
-        Log.e("youpi","j'ai reussi ma vie" + listeUtilisateurs.current.getName());
 
         Intent intent = new Intent(historique.this, listeUtilisateurs.class);
         startActivity(intent);
@@ -121,7 +127,6 @@ public class historique extends AppCompatActivity {
 
                 @Override
                 public void onClick(View v) {
-                    Log.e("CLICK", " test" + currentTextView.getText().toString());
                     currentPartie = new partie(histo.get(compteur).getJour(),histo.get(compteur).getHeure(),histo.get(compteur).getRes());
                     //Intent intent = new Intent(listeUtilisateurs.this, apprentissage.class);
                     //startActivity(intent);

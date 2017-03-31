@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<profil nom ="CM2">
+<profil nom ="CM2" description="2 niveaux, le premier tables de 1 à 9 (série 5), deuxième de 3 à 10">
 	<level num="1">
 		<premierDigit>1</premierDigit>
 		<secondDigit>9</secondDigit>

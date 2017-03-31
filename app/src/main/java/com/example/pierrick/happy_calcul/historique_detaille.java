@@ -36,7 +36,6 @@ public class historique_detaille extends AppCompatActivity {
         for (Iterator<calcul> i = calculs.iterator(); i.hasNext();
                 ) {
             calcul item = i.next();
-            System.out.println("gauchesur : "+ item.getGauche() + " ,droite : " + item.getDroite() +",resultat : " + item.getResultat());
         }
 
 

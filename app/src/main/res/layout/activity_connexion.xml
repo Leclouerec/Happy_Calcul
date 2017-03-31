@@ -68,4 +68,17 @@
         android:elevation="4dp"
         android:onClick="connexion"
         style="@style/Widget.AppCompat.Button.Borderless" />
+
+    <Button
+        android:text="Quitter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="29dp"
+        android:id="@+id/button"
+        android:background="@android:color/transparent"
+        android:textSize="20sp"
+        android:onClick="quit"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="25dp" />
 </RelativeLayout>

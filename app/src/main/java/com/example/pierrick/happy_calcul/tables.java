@@ -24,7 +24,6 @@ public class tables extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tables);
 
-        Log.e("AALO", " pourquioi " + 1);
         spinner_tables = (Spinner) findViewById(R.id.spinner_tables);
         ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.tables, R.layout.spinner_item);
         spinner_tables.setAdapter(adapter);
@@ -45,12 +44,10 @@ public class tables extends AppCompatActivity {
                 itemSelect = (String) spinner_tables.getSelectedItem();
 
                 setTextViewTable(itemSelect);
-                Log.e("TEST", " valeur selectionner " + itemSelect);
             }
 
             public void onNothingSelected(AdapterView<?> parent) {
 
-                Log.e("TEST", " je passe par la" + 1);
             }
         });
 
@@ -66,24 +63,6 @@ public class tables extends AppCompatActivity {
 
         tv.setText(res);
     }
-
-    /*public void addListenerOnButton() {
-
-        imageButton = (ImageButton) findViewById(R.id.imageButton);
-
-        imageButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View arg0) {
-
-                Toast.makeText(tables.this,
-                        "ImageButton is clicked!", Toast.LENGTH_SHORT).show();
-
-            }
-
-        });
-
-    }*/
 
 
     public void previous(View view){

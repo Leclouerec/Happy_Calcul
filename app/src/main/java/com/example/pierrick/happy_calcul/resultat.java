@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.w3c.dom.Document;
@@ -37,11 +38,22 @@ public class resultat extends AppCompatActivity {
     public String heure = "";
     public String jour = "";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resultat);
 
+
+        TextView bravo = (TextView)findViewById(R.id.textView_bravo);
+        TextView nouveau = (TextView)findViewById(R.id.textView_nouveau);
+        ImageView logo = (ImageView)findViewById(R.id.imageView_logo);
+        ImageView bulle = (ImageView)findViewById(R.id.imageView_bulle);
+
+        bravo.setVisibility(View.INVISIBLE);
+        nouveau.setVisibility(View.INVISIBLE);
+        logo.setVisibility(View.INVISIBLE);
+        bulle.setVisibility(View.INVISIBLE);
 
 
         TextView gauche = (TextView) findViewById(R.id.textView_resultat_gauche);
@@ -50,8 +62,6 @@ public class resultat extends AppCompatActivity {
 
         gauche.setText(Html.fromHtml(resGauche));
         droite.setText(Html.fromHtml(resDroite));
-        Log.e("resultat " , " " + resultat );
-        Log.e("serie " , " " + connexion.current.getSerie() );
         res.setText(resultat + " / 20");
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yy");
@@ -98,12 +108,21 @@ public class resultat extends AppCompatActivity {
             connexion.current.setSerie(0);
         }
 
-        Log.e("test serie ", "" + choix_jeux.profil1.getSerie());
-
         if((connexion.current.getSerie() == choix_jeux.profil1.getSerie())&&(choix_jeux.profil1.getSerie()!=0)){
             connexion.current.setNumLevel(connexion.current.getNumLevel()+1);
             changementLevel =true;
             connexion.current.setSerie(0);
+
+            TextView bravo = (TextView)findViewById(R.id.textView_bravo);
+            TextView nouveau = (TextView)findViewById(R.id.textView_nouveau);
+            ImageView logo = (ImageView)findViewById(R.id.imageView_logo);
+            ImageView bulle = (ImageView)findViewById(R.id.imageView_bulle);
+
+            bravo.setVisibility(View.VISIBLE);
+            nouveau.setVisibility(View.VISIBLE);
+            logo.setVisibility(View.VISIBLE);
+            bulle.setVisibility(View.VISIBLE);
+
         }
 
 

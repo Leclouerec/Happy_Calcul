@@ -73,17 +73,10 @@ public class page_calcul extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page_calcul);
-        //lancerJeux();
-
-        //calcul = new redondance(10);
-
-
-
-        Log.e("JE PASSE QUAND", " MEME" + choix_jeux.profil1.getBornePremiereDigit());
 
         profil1 = choix_jeux.profil1;
         borneMin = profil1.getBornePremiereDigit();
-        borneMax = profil1.getBorneDeuxiemeDigitDigit();//se sont les mêmes bornes ...
+        borneMax = profil1.getBorneDeuxiemeDigitDigit();
         serie = profil1.getSerie();
         pourcentageSuivant = profil1.getPourcentage();
         pourcentage2x2 = profil1.getPourcentage2x2();
@@ -91,15 +84,11 @@ public class page_calcul extends AppCompatActivity {
         readRedondance(this);
         calcul = new redondance(borneMax);
         initialisation();
-        Log.e("ET MEME", " LA");
         chronometre();
 
-        //writeToFile(18,this);
 
         numeroQuestion = readFromFile(this); //recuperer le numero de la question sur un fichier externe car n recharge la page
 
-
-        Log.e("ecrite et lecture", " de fichier " + readFromFile(this) + " ,numeroQuestion : "+numeroQuestion);
 
         TextView numeroQuestionTV = (TextView) findViewById(R.id.textViewNombreQuestion);
         numeroQuestionTV.setText(String.valueOf(numeroQuestion));
@@ -108,25 +97,6 @@ public class page_calcul extends AppCompatActivity {
         final EditText resultat = (EditText) findViewById(R.id.editTextResultat);
 
         resultat.requestFocus();
-
-        Log.e("moification serie", " STP " + serie);
-
-
-
-
-        /*if(resultat.requestFocus()){
-            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
-        }
-        resultat.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-
-                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
-                    Log.e("TEST", "Enter pressed :" + resultat.getText().toString());
-                    valideCalcul();
-                }
-                return false;
-            }
-        });*/
 
     }
 
@@ -148,7 +118,6 @@ public class page_calcul extends AppCompatActivity {
     public int nombreAleatoire(int borneMin, int borneMax){
 
         Random r = new Random();
-        //return (int)(Math.random()*(borneMax-borneMin))+1;
         return (int)borneMin + r.nextInt(borneMax+1 - borneMin);
     }
 
@@ -164,8 +133,6 @@ public class page_calcul extends AppCompatActivity {
         View resultatText = factory.inflate(R.layout.activity_resultat, null);
         TextView resultatGauche = (TextView) resultatText.findViewById(R.id.textView_resultat_gauche);
         TextView resultatDroite = (TextView) resultatText.findViewById(R.id.textView_resultat_droite);
-        String resGauche = resultatGauche.getText().toString();
-        String resDroite = resultatDroite.getText().toString();
 
 
 
@@ -174,7 +141,6 @@ public class page_calcul extends AppCompatActivity {
         Boolean juste;
         if(!test || (result.equals(""))){
             result ="0";
-            Log.e("PUTAIN", " skcc");
         }
 
 
@@ -192,7 +158,6 @@ public class page_calcul extends AppCompatActivity {
         try{
             if(Integer.parseInt(result) == gauche * droite){
                 com.example.pierrick.happy_calcul.resultat.resultat++;
-                Log.e("res", " " + com.example.pierrick.happy_calcul.resultat.resultat);
                 juste = true;
             }
             else{
@@ -230,30 +195,6 @@ public class page_calcul extends AppCompatActivity {
 
     public void prochaineQuestion(){
 
-        /*TextView digitGauche = (TextView) findViewById(R.id.textViewDigitGauche);
-        TextView digitDroite = (TextView) findViewById(R.id.textViewDigitDroite);
-        //TextView numeroQuestionTV = (TextView) findViewById(R.id.textViewNombreQuestion);
-        TextView nbQuestion = (TextView) findViewById(R.id.textViewNbQuestion);
-        EditText resultat = (EditText) findViewById(R.id.editTextResultat);
-
-        nbQuestion.setText(" / " + String.valueOf(nombreDeQuestion));
-
-        resultat.requestFocus();
-
-        //numeroQuestionTV.setText(String.valueOf(++numeroQuestion));
-
-
-        digit1 = nombreAleatoire(borneMin, borneMax);
-        digit2 = nombreAleatoire(borneMin, borneMax);
-
-        digitGauche.setText(String.valueOf(digit1));
-        digitDroite.setText(String.valueOf(digit2));
-
-
-
-        resultat.requestFocus();
-        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.showSoftInput(resultat, InputMethodManager.SHOW_FORCED);*/
 
         if(numeroQuestion != 20){
             writeToFile(numeroQuestion +1, this, "config.txt");
@@ -297,7 +238,6 @@ public class page_calcul extends AppCompatActivity {
 
             int pourcent = (int)(Math.random() * (10-1)) + 1;//on tire un nombre aléatoire entre 1 et 10 pour calculer le pourcentage
             //de chance pour tirer un calcul 2x2
-            Log.e("pourcent", " : " + pourcent + " pourcetnfat : " + pourcentage2x2/10);
             if (pourcent >= (100-pourcentage2x2)/10){
                 digit1 = nombreAleatoire(10, borneMax);
                 digit2 = nombreAleatoire(10, borneMax);
@@ -317,11 +257,6 @@ public class page_calcul extends AppCompatActivity {
                 aAjouter = true;
             compteur++;
         }while (!aAjouter);
-
-
-
-
-        //String test = "<font color=#cc0029>"+ " / " + String.valueOf(nombreDeQuestion)+"</font>";
 
 
         nbQuestion.setText(" / " + String.valueOf(nombreDeQuestion));
@@ -354,7 +289,7 @@ public class page_calcul extends AppCompatActivity {
                     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
 
                         if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
-                            Log.e("TEST", "Enter pressed :" + resultat.getText().toString());
+
                             i=10;
                             test = true;
                             //valideCalcul();
@@ -363,7 +298,6 @@ public class page_calcul extends AppCompatActivity {
                     }
                 });
                 i++;
-                Log.e("gueuele de i", " "+i);
                 switch (i){
                     case 1 :image.setImageResource(R.drawable.chrono_8);
                         break;
@@ -423,8 +357,6 @@ public class page_calcul extends AppCompatActivity {
         File file = new File(path, "config.txt");
         int length = (int) file.length();
 
-        Log.e("taille", " " + length);
-
         byte[] bytes = new byte[length];
 
         try {
@@ -437,7 +369,6 @@ public class page_calcul extends AppCompatActivity {
             Log.e("Exception", "File write failed: " + e.toString());
         }
 
-        Log.e("me soule", " " + bytes[0]);
 
         String contents = new String(bytes);
         int res = new BigInteger(bytes).intValue();
@@ -451,8 +382,6 @@ public class page_calcul extends AppCompatActivity {
         File file = new File(path, "redondance.txt");
         int length = (int) file.length();
         tableauCalcul = new int[borneMax + 1][borneMax+1];
-
-        Log.e("taille", " " + length);
 
         byte[] bytes = new byte[length];
 
@@ -471,17 +400,12 @@ public class page_calcul extends AppCompatActivity {
             for(int j = i; j<=borneMax ; j++){
                 tableauCalcul[i][j] = bytes[k];
                 k+=2;
-                Log.e("JESPERE CCEST BON", " "+tableauCalcul[i][j]);
             }
 
-
-
-        Log.e("fait chier", " " + bytes[0] + " 1 :"  + bytes[1] + " 2 :" + bytes[2]);
     }
 
     public void ecrireFichierRedondance(int nbTables, Context context, int[][] tableauCalcul){
 
-        Log.e("creation table", " brne " +nbTables);
 
         try {
             File path = context.getFilesDir();
@@ -492,7 +416,6 @@ public class page_calcul extends AppCompatActivity {
             for(int i = 1 ; i<= nbTables ; i++)
                 for(int j = i ; j <= nbTables; j++)
                 {
-                    Log.e("fait CHIER", " index  "+k + " ,valeur : " + tableauCalcul[i][j]);
                     k++;
                     stream.write(tableauCalcul[i][j]);
                     stream.write(System.getProperty("line.separator").getBytes());

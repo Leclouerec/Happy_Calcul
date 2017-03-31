@@ -189,9 +189,7 @@ public class ReadXMLFileUsers {
         for (Iterator<user> i = users.iterator(); i.hasNext(); pos++
                 ) {
             user item = i.next();
-            Log.e("POURQIOI", " pseudo : "+item.getName() + " ,mdp : " +item.getMdp() + " ,_pseudo :" + _pseudo + " ,_mdp:"+_mdp + ", ta mere" + (item.getName() == _pseudo));
             if((item.getName().equals( _pseudo))&& (item.getMdp().equals(_mdp))){
-                Log.e("POURQIOI", " pseudo : "+item.getName() + " ,mdp : " +item.getMdp());
                 return true;
             }
 
@@ -210,77 +208,8 @@ public class ReadXMLFileUsers {
         StringBuilder sb = null;
         try (
              BufferedReader r = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))) { String str = null;  sb = new StringBuilder(8192); while ((str = r.readLine()) != null) { sb.append(str); } System.out.println("data from InputStream as String : " + sb.toString()); } catch (IOException ioe) { ioe.printStackTrace(); }
-return sb.toString();
+        return sb.toString();
     }
-
-
-    public static void test(){
-        try {
-
-            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-
-            // root elements
-            Document doc = docBuilder.newDocument();
-            Element rootElement = doc.createElement("company");
-            doc.appendChild(rootElement);
-
-            // staff elements
-            Element staff = doc.createElement("Staff");
-            rootElement.appendChild(staff);
-
-            // set attribute to staff element
-            Attr attr = doc.createAttribute("id");
-            attr.setValue("1");
-            staff.setAttributeNode(attr);
-
-            // shorten way
-            // staff.setAttribute("id", "1");
-
-            // firstname elements
-            Element firstname = doc.createElement("prenom");
-            firstname.appendChild(doc.createTextNode("yong"));
-            staff.appendChild(firstname);
-
-            // lastname elements
-            Element lastname = doc.createElement("nom");
-            lastname.appendChild(doc.createTextNode("mook kim"));
-            staff.appendChild(lastname);
-
-            // nickname elements
-            Element nickname = doc.createElement("nickname");
-            nickname.appendChild(doc.createTextNode("mkyong"));
-            staff.appendChild(nickname);
-
-            // salary elements
-            Element salary = doc.createElement("salary");
-            salary.appendChild(doc.createTextNode("100000"));
-            staff.appendChild(salary);
-
-            // write the content into xml file
-            TransformerFactory transformerFactory = TransformerFactory.newInstance();
-            Transformer transformer = transformerFactory.newTransformer();
-            DOMSource source = new DOMSource(doc);
-            /*final File test = new File ("file:///android_asset/qoqoqo");
-            test.mkdirs();*/
-            StreamResult result = new StreamResult(f);
-
-            // Output to console for testing
-            // StreamResult result = new StreamResult(System.out);
-
-            transformer.transform(source, result);
-
-            System.out.println("File saved!");
-
-        } catch (ParserConfigurationException pce) {
-            pce.printStackTrace();
-        } catch (TransformerException tfe) {
-            tfe.printStackTrace();
-        }
-
-    }
-
-
 
 
 }

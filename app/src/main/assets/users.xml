@@ -1,22 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <users>
-	<user>
-		<name>admin</name>
-		<mdp>admin</mdp>
-	</user>
-	<user>
-		<name>toto</name>
-		<mdp>toto</mdp>
-	</user>
-	<user>
-		<name>tata</name>
-		<mdp>tata</mdp>
-	</user>
-	<user>
-		<name>tutu</name>
-		<mdp>tutu</mdp>
-	</user>
-	
+
 </users>
 
 

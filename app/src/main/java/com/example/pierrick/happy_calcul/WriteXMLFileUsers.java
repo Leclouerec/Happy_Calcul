@@ -215,7 +215,6 @@ public class WriteXMLFileUsers {
 
 
                     if((name.getTextContent().toString().equals(_name))){
-                        Log.e("ALLO"," ");
                         personne.getParentNode().removeChild(personne);
                     }
 
@@ -223,11 +222,6 @@ public class WriteXMLFileUsers {
                     users.add(utilisateur);
 
                 }
-            }
-            for (Iterator<user> i = users.iterator(); i.hasNext();
-                    ) {
-                user item = i.next();
-                System.out.println("mot de passe "+ item.getMdp() + " name : " + item.getName());
             }
 
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -423,7 +417,7 @@ public class WriteXMLFileUsers {
 
 
                     if((name.getTextContent().toString().equals("test2"))&&(mdp.getTextContent().toString().equals("test"))){
-                        Log.e("ALLO"," ");
+
                         personne.getParentNode().removeChild(personne);
                     }
 

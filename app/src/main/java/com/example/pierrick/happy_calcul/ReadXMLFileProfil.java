@@ -38,6 +38,8 @@ public class ReadXMLFileProfil {
 
     }
 
+    public ReadXMLFileProfil(){}
+
     public profil getProfil1(){
         return profil1;
     }
@@ -81,6 +83,8 @@ public class ReadXMLFileProfil {
          */
             final Element racine = document.getDocumentElement();
 
+            final String description = racine.getAttribute("description");
+
 
             //Affichage de l'élément racine
             System.out.println("\n*************RACINE************");
@@ -123,28 +127,11 @@ public class ReadXMLFileProfil {
                     int _pourcentage2X2 = Integer.parseInt(pourcentage2x2.getTextContent());
 
                     if(temp == num)
-                        profil1 = new profil(num,firstDigit,secondDigit,_serie,_pourcentageSuivant,_pourcentage2X2);
+                        profil1 = new profil(num,firstDigit,secondDigit,_serie,_pourcentageSuivant,_pourcentage2X2, description);
 
-                    //final profil prof= new profil(name.getTextContent(), mdp.getTextContent());
-            /*
-             * Etape 7 : récupération des numéros de téléphone
-             */
-                    /*final NodeList telephones = racine.getElementsByTagName("level");
-                    final int nbTelephonesElements = telephones.getLength();
-
-                    for(int j = 0; j<nbTelephonesElements; j++) {
-                        final Element telephone = (Element) telephones.item(j);
-
-                        //Affichage du téléphone
-                        System.out.println(telephone.getAttribute("type") + " : " + telephone.getTextContent());
-                    }*/
                 }
             }
 
-
-            /*Node test = document.createElement("test");
-            test.setTextContent("allo");
-            racine.appendChild(test);*/
         }
 
 
@@ -159,6 +146,66 @@ public class ReadXMLFileProfil {
         }
 
 
+    }
+
+    public static String readDescription(InputStream _f){
+        /*
+         * Etape 1 : récupération d'une instance de la classe "DocumentBuilderFactory"
+         */
+        final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        String description = "";
+
+        try {
+            /*
+             * Etape 2 : création d'un parseur
+             */
+            final DocumentBuilder builder = factory.newDocumentBuilder();
+
+        /*
+         * Etape 3 : création d'un Document
+         *
+         *
+         */
+
+            System.out.println("repertoire courant " +System.getProperties().get("user.dir") );
+            //final Document document= builder.parse(new File("/Users/studlerobin/Downloads/Happy_Calcul/app/src/main/assets/users.xml"));
+
+
+
+            final Document document = builder.parse(_f);
+            //final Document document = builder.parse(f);
+
+
+            //Affiche du prologue
+            System.out.println("*************PROLOGUE************");
+            System.out.println("version : " + document.getXmlVersion());
+            System.out.println("encodage : " + document.getXmlEncoding());
+            System.out.println("standalone : " + document.getXmlStandalone());
+
+        /*
+         * Etape 4 : récupération de l'Element racine
+         */
+            final Element racine = document.getDocumentElement();
+
+            description = racine.getAttribute("description");
+
+
+
+
+        }
+
+
+        catch (final ParserConfigurationException e) {
+            e.printStackTrace();
+        }
+        catch (final SAXException e) {
+            e.printStackTrace();
+        }
+        catch (final IOException e) {
+            e.printStackTrace();
+        }
+
+        return description;
     }
 
 

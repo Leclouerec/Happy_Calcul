@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<profil nom ="CE2">
+<profil nom ="CE2" description="2 niveaux, le premier tables de 1 à 5 (série 5), deuxième de 3 à 7">
 	<level num="1">
 		<premierDigit>1</premierDigit>
 		<secondDigit>5</secondDigit>

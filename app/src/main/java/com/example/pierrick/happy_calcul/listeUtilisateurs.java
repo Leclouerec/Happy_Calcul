@@ -26,16 +26,16 @@ public class listeUtilisateurs extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liste_utilisateurs);
 
-        current.setName("admin");
 
-        Button myButton = new Button(this);
-        myButton.setText("push");
-        myButton.setBackgroundColor(Color.TRANSPARENT);
+
+        current.setName("admin");
 
         RelativeLayout rl = (RelativeLayout)findViewById(R.id.liste_utilisateurs);
 
 
         File f2 = new File(this.getFilesDir(), "users.xml");
+        File f3 = new File(this.getFilesDir(), ".xml");
+        f3.delete();
         connexion.fileUsers = new ReadXMLFileUsers(f2);
         int taille = ReadXMLFileUsers.users.size();
 
@@ -63,9 +63,6 @@ public class listeUtilisateurs extends AppCompatActivity {
 
                 @Override
                 public void onClick(View v) {
-                    Log.e("CLICK", " test" + currentTextView.getText().toString());
-                    //Intent intent = new Intent(listeUtilisateurs.this, apprentissage.class);
-                    //startActivity(intent);
                     connexion.current.setName(currentTextView.getText().toString());
                     Intent intent = new Intent(listeUtilisateurs.this, historique.class);
                     startActivity(intent);
@@ -79,8 +76,6 @@ public class listeUtilisateurs extends AppCompatActivity {
         }
 
 
-
-
     }
 
 
@@ -91,6 +86,7 @@ public class listeUtilisateurs extends AppCompatActivity {
 
     public void logout(View view){
         connexion.firstConnexion=true;
+        current.setName("");
         Intent intent = new Intent(this, connexion.class);
         startActivity(intent);
     }

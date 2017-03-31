@@ -1,6 +1,8 @@
 package com.example.pierrick.happy_calcul;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.Environment;
@@ -36,9 +38,6 @@ public class connexion extends AppCompatActivity {
         EditText pseudo = (EditText)findViewById(R.id.editText_pseudo);
         EditText mdp = (EditText)findViewById(R.id.editText_mdp);
 
-
-
-        //mdp.clearFocus();
         pseudo.requestFocus();
 
         writeToFile(1,this); //utile pour la page de calcul
@@ -47,38 +46,20 @@ public class connexion extends AppCompatActivity {
 
         String test = "";
         InputStream is = null;
-        File f = new File(this.getFilesDir(), "stp.xml");
-        Log.e("fichier", " il est où " + f.toURI());
 
-
-        String state = Environment.getExternalStorageState();
-        Log.e("on peut", "ou pas " + Environment.MEDIA_MOUNTED.equals(state));
-
-        /*File f = new File(Environment.getExternalStorageDirectory(), "/MYFOLDER");
-
-        if(!f.exists()){
-            f.mkdirs();
-        }
-        if (!f.mkdirs()) {
-            Log.e(" AAAH", "Directory not created");
-        }*/
 
         try {
             AssetManager am = this.getAssets();
             is = am.open("users.xml");
 
 
-
-
         }catch(IOException ex) {
             //Do something witht the exception
         }
 
-        //fileUsers = new ReadXMLFileUsers(is, f);
 
         File f2 = new File(this.getFilesDir(), "users.xml");
         fileUsers = new ReadXMLFileUsers(f2);
-         Log.e("tesjt", " list " + fileUsers.getUsers().get(0).getName() + " mot de passe " + fileUsers.getUsers().get(0).getMdp());
     }
 
 
@@ -105,33 +86,8 @@ public class connexion extends AppCompatActivity {
             Toast.makeText(this, "Erreur de connexion", Toast.LENGTH_SHORT).show();
 
 
-        Log.e("POSITION", " est present:  " + test + " position : " + index);
-
-
-
-
     }
 
-    private String convertStreamToString(InputStream is) {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-        StringBuilder sb = new StringBuilder();
-
-        String line = null;
-        try {
-            while ((line = reader.readLine()) != null) {
-                sb.append(line).append('\n');
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                is.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return sb.toString();
-    }
 
     private void writeToFile(int data,Context context) {
         try {
@@ -145,6 +101,29 @@ public class connexion extends AppCompatActivity {
             Log.e("Exception", "File write failed: " + e.toString());
         }
     }
+
+    public void quit(View view){
+
+        new AlertDialog.Builder(this)
+                .setTitle("Tu nous quittes déjà ?")
+                .setMessage("Que voulez vous faire ? ")
+                .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // continue with delete
+                        finishAffinity();
+
+                    }
+                })
+                .setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                })
+                .setIcon(R.mipmap.logo)
+                .show();
+
+    }
+
 
 
 }
